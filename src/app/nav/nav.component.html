@@ -7,7 +7,7 @@
         </button>
         <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="accountService.currentUser$ | async">
           <ng-container *ngFor="let item of navItemsList">
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="item.visible">
               <a [routerLink]="[]" (click)="goTo(item.url)" class={{item.class}} aria-current="page" routerLinkActive="active">{{item.translation}}</a>
             </li>
           </ng-container>

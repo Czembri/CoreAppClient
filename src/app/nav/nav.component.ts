@@ -25,13 +25,15 @@ export class NavComponent implements OnInit, OnDestroy {
       this.navItemsList.push(<NavigationItem>{
         class: 'nav-link',
         url: '/user-receipts',
-        translation: translation['USER_RECEIPTS']
+        translation: translation['USER_RECEIPTS'],
+        visible: false
       });
 
       this.navItemsList.push(<NavigationItem>{
         class: 'nav-link',
         url: '/contractors',
-        translation: translation['CONTRACTORS']
+        translation: translation['CONTRACTORS'],
+        visible: false
       });
     });
   }
@@ -46,12 +48,6 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   goTo(url: string) {
-    // this.router.routeReuseStrategy.shouldReuseRoute = function () {
-    //   return false;
-    // }
-
-    // this.router.onSameUrlNavigation = 'reload';
-
     // DEV!!
     this.router.navigate([url]).then(
       () => window.location.reload());

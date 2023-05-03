@@ -2,4 +2,5 @@ export interface NavigationItem {
   class: string;
   url: string;
   translation: string;
+  visible: boolean;
 }
