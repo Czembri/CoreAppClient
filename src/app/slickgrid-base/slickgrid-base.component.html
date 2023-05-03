@@ -1,0 +1,10 @@
+<div class="container">
+    <angular-slickgrid
+            gridId="grid"
+            [columnDefinitions]="colDefsRef$ | async"
+            [gridOptions]="gridOptionsRef$ | async"
+            [dataset]="dataSet | async"
+            (onAngularGridCreated)="angularGridReady($event)"
+            (onSelectedRowsChanged)="onSelectedRowsChanged($event)">
+  </angular-slickgrid>
+</div>

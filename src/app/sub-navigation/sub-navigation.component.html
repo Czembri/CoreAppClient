@@ -1,0 +1,5 @@
+<ul class="nav">
+    <li *ngFor="let item of naviOptions">
+        <a class='{{item.customLinkCssClasses}}' href='{{item.url}}'>{{item.text | translate}}</a>
+    </li>
+</ul>

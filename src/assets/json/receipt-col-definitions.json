@@ -1,0 +1,51 @@
+[
+  {
+    "id": "id",
+    "name": "id",
+    "field": "id",
+    "sortable": true,
+    "width":20
+  },
+  {
+    "id": "receiptNumber",
+    "name": "receiptNumber",
+    "field": "receiptNumber",
+    "sortable": true,
+    "width":40
+  },
+  {
+    "id": "created",
+    "name": "created",
+    "field": "created",
+    "sortable": true,
+    "width":30
+  },
+  {
+    "id": "positionsCount",
+    "name": "positionsCount",
+    "field": "positionsCount",
+    "sortable": true,
+    "width":20
+  },
+  {
+    "id": "shopName",
+    "name": "shopName",
+    "field": "shopName",
+    "sortable": true,
+    "width":60
+  },
+  {
+    "id": "total",
+    "name": "total",
+    "field": "total",
+    "sortable": true,
+    "width":30
+  },
+  {
+    "id": "paymentType",
+    "name": "paymentType",
+    "field": "paymentType",
+    "sortable": true,
+    "width":40
+  }
+]
