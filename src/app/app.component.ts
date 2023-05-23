@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Actions, ofActionSuccessful, Store } from '@ngxs/store';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
-import { GetUserReceipts } from './user-receipts/state/user-receipts.actions';
-import { UserReceiptsState } from './user-receipts/state/user-receipts.state';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import {TranslateService} from "@ngx-translate/core";
@@ -19,8 +17,6 @@ export class AppComponent implements OnInit, OnDestroy {
   public receiptsData$ = new BehaviorSubject<string>('');
 
   constructor(private accountService: AccountService,
-    private store: Store,
-    private actions$: Actions,
     translate: TranslateService) {
       translate.setDefaultLang('pl');
       translate.use('pl');
@@ -29,19 +25,20 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.setCurrentUser();
 
-    this.store.dispatch(new GetUserReceipts());
-    this.actions$.pipe(
-      takeUntil(this.destroyed$),
-      ofActionSuccessful(GetUserReceipts))
-      .subscribe(() => {
-        const receiptsStringData = JSON.stringify(this.store.selectSnapshot(UserReceiptsState.userReceiptsState));
-        const reportSettings = JSON.stringify(
-          JSON.parse(`{
-            "dataSource": { "data": ${receiptsStringData} }
-          }`)
-        );
-        this.receiptsData$.next(reportSettings);
-      })
+    // report
+    // this.store.dispatch(new GetUserReceipts());
+    // this.actions$.pipe(
+    //   takeUntil(this.destroyed$),
+    //   ofActionSuccessful(GetUserReceipts))
+    //   .subscribe(() => {
+    //     const receiptsStringData = JSON.stringify(this.store.selectSnapshot(UserReceiptsState.userReceiptsState));
+    //     const reportSettings = JSON.stringify(
+    //       JSON.parse(`{
+    //         "dataSource": { "data": ${receiptsStringData} }
+    //       }`)
+    //     );
+    //     this.receiptsData$.next(reportSettings);
+    //   })
   }
 
   ngOnDestroy(): void {

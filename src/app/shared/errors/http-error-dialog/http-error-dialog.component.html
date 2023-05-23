@@ -1,5 +1,16 @@
-<h1 mat-dialog-title>{{data.title}}</h1>
-<div mat-dialog-content>{{data.content}}</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="close()">Close</button>
+<h1 mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle>
+    {{data.title}}
+</h1>
+ <div class="card">
+  <img class="card-img-top img-style" src="../../../../assets/images/error_img.png" alt="Error image">
+  <div class="card-body">
+    <h5 class="card-title">{{ 'ERROR_DESCRIPTION' | translate }}</h5>
+    <p class="card-text">{{data.content}}</p>
+  </div>
+  <div class="card-footer d-flex justify-content-end">
+    <button type="button" class="btn btn-secondary btn-style" (click)="close()">{{ 'CLOSE' | translate }}</button>
+  </div>
 </div>

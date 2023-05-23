@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './nav/nav.component'
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
@@ -27,14 +26,22 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { NgxsRootModule } from '@ngxs/store/src/modules/ngxs-root.module';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+import { NavComponent } from './nav/nav.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     HomeComponent,
+    NavComponent
   ],
   imports: [
+    MatCardModule,
+    MatDialogModule,
+    MatButtonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -49,6 +56,7 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
     ReactiveFormsModule,
     FormsModule,
     WebdatarocksPivotModule,
+    AdminModule,
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
     }),
@@ -63,8 +71,8 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
     })
   ],
   entryComponents: [
-    NavComponent,
     HomeComponent,
+    NavComponent
   ],
   bootstrap: [AppComponent],
   providers: [HttpClient,

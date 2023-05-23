@@ -1,0 +1,30 @@
+.img-style {
+  width: 320px;
+  height: 250px;
+}
+
+.img-container {
+  padding: 0;
+}
+
+.title {
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 32px;
+  color: brown;
+}
+
+.card-body {
+  color: rgb(102, 102, 102);
+  text-align: center;
+}
+
+.btn-style {
+  width: 120px;
+  margin: 15px 0;
+}
+
+.btn-container {
+  height: 30px;
+}

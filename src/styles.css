@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'webdatarocks/webdatarocks.min.css'
+@import 'webdatarocks/webdatarocks.min.css';
+
+[mat-dialog-title] {
+  margin: -24px -24px 0px -24px !important;
+  padding: 10px 24px;
+  background: rgb(156, 52, 52);
+  color: #fff;
+  cursor: move;
+}

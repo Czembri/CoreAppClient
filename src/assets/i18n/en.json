@@ -10,6 +10,7 @@
 	"DELETE": "Delete",
 	"EDIT": "Edit",
 	"EDIT_PROFILE": "Edit profile",
+	"ADMIN_VIEW": "Admin view",
 	"EMPTY_DATA_WARNING_MESSAGE": "No data to display.",
 	"ENTER_LOGIN_PASSWORD": "Please enter your login and password!",
 	"EXPORT_TO_EXCEL": "Export to excel",
@@ -37,5 +38,7 @@
 	"postalCode": "Postal code",
 	"receiptNumber": "Receipt number",
 	"shopName": "Shop name",
-	"total": "Total"
+	"total": "Total",
+  "ERROR_DESCRIPTION": "Error description",
+  "CLOSE": "Close"
 }

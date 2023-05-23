@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ILogin } from '../nav/login.model';
 import { DialogService } from '../shared/services/dialog.service';
 import { AccountService } from '../_services/account.service';
+import { tap } from 'rxjs';
+import { HttpErrorModel } from '../shared/errors/models/http-error.model';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +17,13 @@ export class HomeComponent implements OnInit {
   username: string;
   password: string;
   loginValid = true;
-  
-  constructor(public accountService: AccountService, private dialogService: DialogService) {}
+
+  constructor(
+    public accountService: AccountService) {}
 
   ngOnInit(): void {
   }
-  
+
   registerToggle() {
     this.registerMode = !this.registerMode;
   }
@@ -31,15 +34,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.model = { username: this.username, password: this.password };
-    this.accountService.login(this.model).subscribe({
-      next: () => { },
-      error: (error: HttpErrorResponse) => {
-        if (error.status == 401) {
-          this.loginValid = false;
-          this.dialogService.openErrorDialog("Unauthorized", "Wrong username or password!");
-        }
-      }
-    });
+    this.accountService.login(this.model).subscribe();
   }
 
 }

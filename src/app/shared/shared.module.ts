@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { HttpErrorDialogComponent } from "./errors/http-error-dialog/http-error-dialog.component";
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogService } from "./services/dialog.service";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
     declarations: [
@@ -14,9 +15,10 @@ import { DialogService } from "./services/dialog.service";
         HttpErrorDialogComponent
     ],
     imports: [
-        MatDialogModule
+        MatDialogModule,
+        TranslateModule,
     ],
-    providers: [DialogService, 
+    providers: [DialogService,
         { provide: MatDialogRef, useValue: {} },
 	    { provide: MAT_DIALOG_DATA, useValue: [] },
     ]

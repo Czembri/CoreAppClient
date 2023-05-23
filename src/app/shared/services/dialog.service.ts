@@ -11,7 +11,7 @@ export class DialogService {
 
    public openErrorDialog(title: string, content: string) {
     this.dialog.open(HttpErrorDialogComponent, {
-        width: '350px',
+        panelClass: 'error-dialog__style',
         data: {
           title: title,
           content: content
