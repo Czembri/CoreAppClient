@@ -17,8 +17,10 @@
             <a class="dropdown-toggle text-light" dropdownToggle>{{ 'WELCOME' | translate }} {{ accountService.getCurrentUserName() }}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
                 <a class="dropdown-item">{{ 'EDIT_PROFILE' | translate }}</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item">{{ 'ADMIN_VIEW' | translate }}</a>
+                <ng-container *ngIf="userRoles?.includes(roleEnum.Admin)">
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/admin">{{ 'ADMIN_VIEW' | translate }}</a>
+                </ng-container>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="logout()" href="/">{{ 'LOGOUT' | translate }}</a>
             </div>

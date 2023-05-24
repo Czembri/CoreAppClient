@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../_services/account.service';
 import { NavigationItem } from './models/nav-item.model';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
+import { Role } from '../shared/roles/enums/role.enum';
 
 @Component({
   selector: 'app-nav',
@@ -13,11 +14,17 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit, OnDestroy {
 
   public navItemsList = new Array<NavigationItem>;
+  public userRoles = new Array<string>;
+  public roleEnum = Role;
+
   private destroyed$ = new Subject<void>();
 
   constructor(public accountService: AccountService,
     private translate: TranslateService,
-    private router: Router) { }
+    private router: Router) {
+
+    this.userRoles = this.accountService.getCurrentUserRoles();
+  }
 
   ngOnInit(): void {
     this.translate.getTranslation(this.translate.currentLang)

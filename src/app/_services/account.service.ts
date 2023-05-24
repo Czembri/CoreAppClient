@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
 import { ReplaySubject } from 'rxjs';
 import { IRregistrationModel } from '../register/registration.model';
+import { Role } from '../shared/roles/enums/role.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,9 @@ export class AccountService {
 
   public login(model: any) {
     return this.http.post(`${this.baseUrl}account/login`, model).pipe(
-      map((response: User) => {
-        const user = response;
+      map((user: User) => {
         if (user) {
+          localStorage.setItem('roles', JSON.stringify(user.role));
           localStorage.setItem('user', JSON.stringify(user.userName));
           localStorage.setItem('token', JSON.stringify(user.token));
           this.currentUserSource.next(user);
@@ -32,6 +33,7 @@ export class AccountService {
     return this.http.post<User>(`${this.baseUrl}account/register`, model).pipe(
       map(user => {
         if (user) {
+          localStorage.setItem('roles', JSON.stringify(user.role));
           localStorage.setItem('user', JSON.stringify(user.userName));
           localStorage.setItem('token', JSON.stringify(user.token));
           this.currentUserSource.next(user);
@@ -43,6 +45,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    localStorage.removeItem('roles');
     this.currentUserSource.next(null);
   }
 
@@ -50,15 +53,21 @@ export class AccountService {
     this.currentUserSource.next(user);
   }
 
-  getCurrentUserName() {
+  getCurrentUserName(): string {
     const user: string = JSON.parse(localStorage.getItem('user'));
     return user ?? '';
+  }
+
+  getCurrentUserRoles(): Array<string> {
+    const roles: Array<string> = JSON.parse(localStorage.getItem('roles'));
+    return roles;
   }
 
   getCurrentUser(): User {
     return {
       userName: JSON.parse(localStorage.getItem('user')),
-      token: JSON.parse(localStorage.getItem('token'))
+      token: JSON.parse(localStorage.getItem('token')),
+      role: JSON.parse(localStorage.getItem('roles'))
     } as User;
   }
 }

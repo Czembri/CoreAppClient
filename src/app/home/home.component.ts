@@ -1,10 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ILogin } from '../nav/login.model';
-import { DialogService } from '../shared/services/dialog.service';
 import { AccountService } from '../_services/account.service';
-import { tap } from 'rxjs';
-import { HttpErrorModel } from '../shared/errors/models/http-error.model';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.model = { username: this.username, password: this.password };
-    this.accountService.login(this.model).subscribe();
+    this.accountService.login(this.model).subscribe(_ => window.location.reload());
   }
 
 }
