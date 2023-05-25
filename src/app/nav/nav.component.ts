@@ -2,9 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../_services/account.service';
 import { NavigationItem } from './models/nav-item.model';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 import { Role } from '../shared/roles/enums/role.enum';
+import { environment } from 'src/environments/environment';
+import { RoleService } from '../shared/roles/services/role.service';
 
 @Component({
   selector: 'app-nav',
@@ -14,35 +16,36 @@ import { Role } from '../shared/roles/enums/role.enum';
 export class NavComponent implements OnInit, OnDestroy {
 
   public navItemsList = new Array<NavigationItem>;
-  public userRoles = new Array<string>;
   public roleEnum = Role;
 
   private destroyed$ = new Subject<void>();
 
-  constructor(public accountService: AccountService,
+  constructor(
+    public roleService: RoleService,
+    public accountService: AccountService,
     private translate: TranslateService,
-    private router: Router) {
-
-    this.userRoles = this.accountService.getCurrentUserRoles();
-  }
+    private router: Router) {}
 
   ngOnInit(): void {
-    this.translate.getTranslation(this.translate.currentLang)
-      .pipe(takeUntil(this.destroyed$)).subscribe(translation => {
-      this.navItemsList.push(<NavigationItem>{
-        class: 'nav-link',
-        url: '/user-receipts',
-        translation: translation['USER_RECEIPTS'],
-        visible: false
-      });
+    //DEV
+    if (!environment.production) {
+      this.translate.getTranslation(this.translate.currentLang)
+        .pipe(takeUntil(this.destroyed$)).subscribe(translation => {
+        this.navItemsList.push(<NavigationItem>{
+          class: 'nav-link',
+          url: '/user-receipts',
+          translation: translation['USER_RECEIPTS'],
+          visible: true
+        });
 
-      this.navItemsList.push(<NavigationItem>{
-        class: 'nav-link',
-        url: '/contractors',
-        translation: translation['CONTRACTORS'],
-        visible: false
+        this.navItemsList.push(<NavigationItem>{
+          class: 'nav-link',
+          url: '/contractors',
+          translation: translation['CONTRACTORS'],
+          visible: true
+        });
       });
-    });
+    }
   }
 
   ngOnDestroy(): void {

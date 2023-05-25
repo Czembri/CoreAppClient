@@ -8,6 +8,7 @@ import { SubNavigationModule } from "../sub-navigation/sub-navigation.module";
 import { ContractorsState } from "./state/contractors.state";
 import { ContractorsComponent } from "./contractors.component";
 import { CommonModule } from "@angular/common";
+import { ContractorsRoutingModule } from "./contractors-routing.module";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CommonModule } from "@angular/common";
     ContractorsComponent
   ],
   imports: [
+    ContractorsRoutingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

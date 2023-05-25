@@ -1,4 +1,5 @@
 <div class="container">
+  <ng-container *ngIf="(colDefsRef$ | async).length > 0">
     <angular-slickgrid
             gridId="grid"
             [columnDefinitions]="colDefsRef$ | async"
@@ -7,4 +8,5 @@
             (onAngularGridCreated)="angularGridReady($event)"
             (onSelectedRowsChanged)="onSelectedRowsChanged($event)">
   </angular-slickgrid>
+  </ng-container>
 </div>

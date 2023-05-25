@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Column, GridOption } from 'angular-slickgrid';
-import { catchError, tap, throwError } from 'rxjs';
+import { catchError, iif, takeWhile, tap, throwError } from 'rxjs';
 import { BaseState } from 'src/app/_models/base-state.model';
 import { BrowserService } from 'src/app/_services/browser.service';
 import { GetBrowserInfo, GetBrowserInfoFailed, GetBrowserInfoSuccess } from './browser.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 
 export interface BrowserStateModel extends BaseState {
   browserName: string;
@@ -26,7 +27,9 @@ export interface BrowserStateModel extends BaseState {
 
 @Injectable()
 export class BrowserState {
-  constructor(private browserService: BrowserService, private translate: TranslateService) {}
+  constructor(private browserService: BrowserService,
+    private translate: TranslateService,
+    private dialogService: DialogService) {}
 
   @Selector()
   public static browserColumnDefinitions(state: BrowserStateModel) {
@@ -46,6 +49,7 @@ export class BrowserState {
   @Action(GetBrowserInfo)
   public getBrowserInfo(ctx: StateContext<BrowserStateModel>, action: GetBrowserInfo) {
     return this.browserService.getBrowserInfo(action.browserName).pipe(
+      takeWhile(x => !!x.columnDefinitions),
       tap(browser => {
         const columnSettings = JSON.parse(browser.columnDefinitions) as Column[];
         columnSettings.forEach(col => {

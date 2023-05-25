@@ -13,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './_services/auth-guard.service';
 import { AuthService } from './_services/auth.service';
 import { JwtHelperService, JWT_OPTIONS, JwtInterceptor } from '@auth0/angular-jwt';
-import { UserReceiptsModule } from './user-receipts/user-receipts.module';
 import { BrowserService } from './_services/browser.service';
 import {NgxsModule} from '@ngxs/store';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
@@ -31,6 +30,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AdminModule } from './admin/admin.module';
+import { AccountService } from './_services/account.service';
+import { AdminGuardService } from './_services/admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -49,14 +50,12 @@ import { AdminModule } from './admin/admin.module';
     BsDropdownModule.forRoot(),
     HttpClientModule,
     SharedModule,
-    UserReceiptsModule,
     ContractorsModule,
     RegisterModule,
     MaterialsModule,
     ReactiveFormsModule,
     FormsModule,
     WebdatarocksPivotModule,
-    AdminModule,
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
     }),
@@ -75,8 +74,11 @@ import { AdminModule } from './admin/admin.module';
     NavComponent
   ],
   bootstrap: [AppComponent],
-  providers: [HttpClient,
+  providers: [
+    AccountService,
+    HttpClient,
     AuthGuardService,
+    AdminGuardService,
     AuthService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,

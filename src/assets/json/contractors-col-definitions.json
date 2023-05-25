@@ -1,0 +1,58 @@
+[
+  {
+    "id": "id",
+    "name": "id",
+    "field": "id",
+    "sortable": true,
+    "width":20
+  },
+  {
+    "id": "companyName",
+    "name": "companyName",
+    "field": "companyName",
+    "sortable": true,
+    "width":50
+  },
+  {
+    "id": "companyType",
+    "name": "companyType",
+    "field": "companyType",
+    "sortable": true,
+    "width":30
+  },
+  {
+    "id": "address",
+    "name": "address",
+    "field": "address",
+    "sortable": true,
+    "width":50
+  },
+  {
+    "id": "city",
+    "name": "city",
+    "field": "city",
+    "sortable": true,
+    "width":40
+  },
+  {
+    "id": "postalCode",
+    "name": "postalCode",
+    "field": "postalCode",
+    "sortable": true,
+    "width":20
+  },
+  {
+    "id": "nip",
+    "name": "nip",
+    "field": "nip",
+    "sortable": true,
+    "width":30
+  },
+  {
+    "id": "created",
+    "name": "created",
+    "field": "created",
+    "sortable": true,
+    "width":30
+  }
+]

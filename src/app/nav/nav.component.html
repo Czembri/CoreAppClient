@@ -17,7 +17,7 @@
             <a class="dropdown-toggle text-light" dropdownToggle>{{ 'WELCOME' | translate }} {{ accountService.getCurrentUserName() }}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
                 <a class="dropdown-item">{{ 'EDIT_PROFILE' | translate }}</a>
-                <ng-container *ngIf="userRoles?.includes(roleEnum.Admin)">
+                <ng-container *ngIf="roleService.hasRole('Admin')">
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/admin">{{ 'ADMIN_VIEW' | translate }}</a>
                 </ng-container>

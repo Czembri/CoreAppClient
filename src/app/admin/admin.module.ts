@@ -22,4 +22,8 @@ import { CommonModule } from "@angular/common";
     NgxsModule.forFeature([]),
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+  constructor() {
+    console.warn('Admin')
+  }
+ }

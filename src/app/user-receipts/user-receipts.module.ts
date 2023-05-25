@@ -7,6 +7,7 @@ import { SlickgridBaseModule } from "../slickgrid-base/slickgrid-base.module";
 import { SubNavigationModule } from "../sub-navigation/sub-navigation.module";
 import { UserReceiptsState } from "./state/user-receipts.state";
 import { UserReceiptsComponent } from "./user-receipts.component";
+import { UserReceipsRoutingModule } from "./user-receipts-routing.module";
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { UserReceiptsComponent } from "./user-receipts.component";
     UserReceiptsComponent
   ],
   imports: [
+    UserReceipsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,

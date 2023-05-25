@@ -1,12 +1,13 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { AuthService } from './auth.service';
+import { RoleService } from '../shared/roles/services/role.service';
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class AdminGuardService implements CanActivate {
   constructor(private injector: Injector, public router: Router) {}
   canActivate(): boolean {
-    const auth = this.injector.get(AuthService);
-    if (!auth.isAuthenticated()) {
+    const auth = this.injector.get(RoleService);
+    console.warn('TEST')
+    if (!auth.hasRole('Admin')) {
       this.router.navigate(['/']);
       return false;
     }
