@@ -12,7 +12,7 @@ import { MaterialsModule } from './materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './_services/auth-guard.service';
 import { AuthService } from './_services/auth.service';
-import { JwtHelperService, JWT_OPTIONS, JwtInterceptor } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { BrowserService } from './_services/browser.service';
 import {NgxsModule} from '@ngxs/store';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
@@ -29,15 +29,14 @@ import { NavComponent } from './nav/nav.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { AdminModule } from './admin/admin.module';
 import { AccountService } from './_services/account.service';
 import { AdminGuardService } from './_services/admin-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     MatCardModule,
@@ -70,8 +69,8 @@ import { AdminGuardService } from './_services/admin-guard.service';
     })
   ],
   entryComponents: [
-    HomeComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent
   ],
   bootstrap: [AppComponent],
   providers: [

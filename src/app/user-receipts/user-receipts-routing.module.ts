@@ -4,13 +4,10 @@ import { AuthGuardService } from '../_services/auth-guard.service';
 import { UserReceiptsComponent } from './user-receipts.component';
 
 const routes: Routes = [
-//   {
-//     path: 'new',
-//     component: UserReceiptComponent
-//   },
-,
   {
-    path: '', component: UserReceiptsComponent, canActivate: [AuthGuardService]
+    path: '',
+    component: UserReceiptsComponent,
+    canActivate: [AuthGuardService]
   },
 ];
 
