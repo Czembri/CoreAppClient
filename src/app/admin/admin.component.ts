@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { AdminState } from './state/admin.state';
+import { GetAdminViewInfo } from './state/admin.actions';
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
@@ -6,5 +9,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminComponent {
-  constructor() {}
+  constructor(private store: Store) {
+    console.warn('constr')
+    this.store.dispatch(new GetAdminViewInfo());
+  }
 }

@@ -10,5 +10,5 @@ export class GetUserReceiptsSuccess {
 }
 
 export class GetUserReceiptsFailed {
-  static readonly type = '[RECEIPTS] Get user receipts success';
+  static readonly type = '[RECEIPTS] Get user receipts failed';
 }

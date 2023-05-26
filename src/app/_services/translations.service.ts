@@ -8,7 +8,7 @@ export class TranslationsService {
 
   constructor(private translate: TranslateService) { }
 
-  enumTranslation(enumValue) {
+  enumTranslation(enumValue: string | string[]) {
     return this.translate.instant(enumValue);
   }
 }

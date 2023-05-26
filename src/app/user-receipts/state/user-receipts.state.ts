@@ -35,7 +35,7 @@ export interface UserReceiptsStateModel extends BaseState {
 
 @Injectable()
 export class UserReceiptsState {
-  constructor(private receiptsServce: ReceiptsService) {}
+  constructor(private receiptsService: ReceiptsService) {}
 
   @Selector()
   public static userReceipts(state: UserReceiptsStateModel[]) {
@@ -58,7 +58,7 @@ export class UserReceiptsState {
 
   @Action(GetUserReceipts)
   public getUserReceipts(ctx: StateContext<UserReceiptsStateModel[]>) {
-    return this.receiptsServce.getReceipts().pipe(
+    return this.receiptsService.getReceipts().pipe(
       map(receipts => {
         return receipts.map(dto => <UserReceiptsStateModel>{
           id: dto.id,

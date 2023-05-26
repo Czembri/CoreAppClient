@@ -6,12 +6,15 @@ import { MaterialsModule } from "../materials.module";
 import { SlickgridBaseModule } from "../slickgrid-base/slickgrid-base.module";
 import { SubNavigationModule } from "../sub-navigation/sub-navigation.module";
 import { CommonModule } from "@angular/common";
+import { AdminRoutingModule } from "./admin.routing-module";
+import { AdminState } from "./state/admin.state";
 
 
 @NgModule({
   declarations: [],
   entryComponents: [],
   imports: [
+    AdminRoutingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -19,7 +22,7 @@ import { CommonModule } from "@angular/common";
     SubNavigationModule,
     MaterialsModule,
     SlickgridBaseModule,
-    NgxsModule.forFeature([]),
+    NgxsModule.forFeature([AdminState]),
   ]
 })
 export class AdminModule {}
