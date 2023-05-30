@@ -40,5 +40,11 @@
 	"shopName": "Nazwa sklepu",
 	"total": "Suma",
   "ERROR_DESCRIPTION": "Opis błędu",
-  "CLOSE": "Zamknij"
+  "CLOSE": "Zamknij",
+  "creationDate": "Data utworzenia",
+  "login": "Login",
+  "modificationDate": "Data modyfikacji",
+  "firstName": "Imię",
+  "lastName": "Nazwisko",
+  "roles": "Role"
 }

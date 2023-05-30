@@ -3,7 +3,7 @@ import { Role } from "src/app/shared/roles/enums/role.enum";
 
 export interface IApplicationUser {
   id: number;
-  login: string;
+  userName: string;
   creationDate: Moment;
   modificationDate: Moment;
   userRole: IUserRole[];
@@ -22,4 +22,17 @@ export interface IUserInfo {
 export interface IUserRole {
   id: number;
   role: Role;
+}
+
+export interface IBrowserUserModel {
+  id: number;
+  login: string;
+  creationDate: string;
+  modificationDate: string;
+  roles: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  postalCode: string;
 }

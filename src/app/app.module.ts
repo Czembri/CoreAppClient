@@ -26,9 +26,6 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { NgxsRootModule } from '@ngxs/store/src/modules/ngxs-root.module';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { NavComponent } from './nav/nav.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
 import { AccountService } from './_services/account.service';
 import { AdminGuardService } from './_services/admin-guard.service';
 
@@ -39,9 +36,6 @@ import { AdminGuardService } from './_services/admin-guard.service';
     HomeComponent
   ],
   imports: [
-    MatCardModule,
-    MatDialogModule,
-    MatButtonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -69,6 +63,7 @@ import { AdminGuardService } from './_services/admin-guard.service';
     })
   ],
   entryComponents: [
+    AppComponent,
     NavComponent,
     HomeComponent
   ],

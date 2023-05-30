@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { GetContractors } from './state/contractors.actions';
-import { Actions, Select, Store, ofActionCompleted, ofActionSuccessful } from '@ngxs/store';
+import { Actions, Store, ofActionCompleted } from '@ngxs/store';
 import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
-import { ContractorsState, ContractorsStateModel } from './state/contractors.state';
-import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { ContractorsState } from './state/contractors.state';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-contractors',

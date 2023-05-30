@@ -8,10 +8,11 @@ import { SubNavigationModule } from "../sub-navigation/sub-navigation.module";
 import { CommonModule } from "@angular/common";
 import { AdminRoutingModule } from "./admin.routing-module";
 import { AdminState } from "./state/admin.state";
+import { AdminComponent } from "./admin.component";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AdminComponent],
   entryComponents: [],
   imports: [
     AdminRoutingModule,

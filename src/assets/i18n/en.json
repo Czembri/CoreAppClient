@@ -40,5 +40,11 @@
 	"shopName": "Shop name",
 	"total": "Total",
   "ERROR_DESCRIPTION": "Error description",
-  "CLOSE": "Close"
+  "CLOSE": "Close",
+  "creationDate": "Creation date",
+  "login": "Login",
+  "modificationDate": "Modification date",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "roles": "Roles"
 }

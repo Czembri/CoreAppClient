@@ -1,0 +1,72 @@
+[
+  {
+    "id": "id",
+    "name": "id",
+    "field": "id",
+    "sortable": true,
+    "width":10
+  },
+  {
+    "id": "creationDate",
+    "name": "creationDate",
+    "field": "creationDate",
+    "sortable": true,
+    "width":30
+  },
+  {
+    "id": "login",
+    "name": "login",
+    "field": "login",
+    "sortable": true,
+    "width":50
+  },
+  {
+    "id": "modificationDate",
+    "name": "modificationDate",
+    "field": "modificationDate",
+    "sortable": true,
+    "width":30
+  },
+  {
+    "id": "firstName",
+    "name": "firstName",
+    "field": "firstName",
+    "sortable": true,
+    "width":50
+  },
+  {
+    "id": "lastName",
+    "name": "lastName",
+    "field": "lastName",
+    "sortable": true,
+    "width":50
+  },
+  {
+    "id": "address",
+    "name": "address",
+    "field": "address",
+    "sortable": true,
+    "width":40
+  },
+  {
+    "id": "city",
+    "name": "city",
+    "field": "city",
+    "sortable": true,
+    "width":40
+  },
+  {
+    "id": "postalCode",
+    "name": "postalCode",
+    "field": "postalCode",
+    "sortable": true,
+    "width":20
+  },
+  {
+    "id": "roles",
+    "name": "roles",
+    "field": "roles",
+    "sortable": true,
+    "width":40
+  }
+]
