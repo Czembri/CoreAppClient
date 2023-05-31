@@ -1,4 +1,4 @@
-import { AdminViewStateModel } from "./admin.state";
+import { IApplicationUser } from "../models/user.model";
 
 export class GetAdminViewInfo {
   static readonly type = '[ADMIN] Get admin view info';
@@ -6,7 +6,7 @@ export class GetAdminViewInfo {
 
 export class GetAdminViewInfoSuccess {
   static readonly type = '[ADMIN] Get admin view info success';
-  constructor(public adminView: AdminViewStateModel[]) {};
+  constructor(public adminView: IApplicationUser[]) {};
 }
 
 export class GetAdminViewInfoFailed {

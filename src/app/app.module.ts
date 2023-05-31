@@ -45,7 +45,7 @@ import { AdminGuardService } from './_services/admin-guard.service';
     SharedModule,
     ContractorsModule,
     RegisterModule,
-    MaterialsModule,
+    // MaterialsModule,
     ReactiveFormsModule,
     FormsModule,
     WebdatarocksPivotModule,

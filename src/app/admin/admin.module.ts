@@ -4,15 +4,17 @@ import { MatTableModule } from "@angular/material/table";
 import { NgxsModule } from "@ngxs/store";
 import { MaterialsModule } from "../materials.module";
 import { SlickgridBaseModule } from "../slickgrid-base/slickgrid-base.module";
-import { SubNavigationModule } from "../sub-navigation/sub-navigation.module";
 import { CommonModule } from "@angular/common";
 import { AdminRoutingModule } from "./admin.routing-module";
 import { AdminState } from "./state/admin.state";
 import { AdminComponent } from "./admin.component";
+import { AdminUserDetailsComponent } from "./admin-details/admin-user-details.component";
+import { HeaderModule } from "../header/header.module";
+import { ActionsFooterButtonsModule } from "../actions-footer-buttons/actions-footer-buttons.module";
 
 
 @NgModule({
-  declarations: [AdminComponent],
+  declarations: [AdminComponent, AdminUserDetailsComponent],
   entryComponents: [],
   imports: [
     AdminRoutingModule,
@@ -20,10 +22,11 @@ import { AdminComponent } from "./admin.component";
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    SubNavigationModule,
     MaterialsModule,
     SlickgridBaseModule,
     NgxsModule.forFeature([AdminState]),
+    HeaderModule,
+    ActionsFooterButtonsModule
   ]
 })
 export class AdminModule {}

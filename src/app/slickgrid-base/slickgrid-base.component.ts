@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Actions, ofActionCompleted, ofActionSuccessful, Select, Store } from '@ngxs/store';
 import { AngularGridInstance, Column, GridOption, GridStateChange } from 'angular-slickgrid';
-import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, of, takeUntil } from 'rxjs';
 import { defaultGridOptions } from '../shared/constants/slickgrid-defaults';
 import { GetBrowserInfo } from './state/browser.actions';
 import { BrowserState } from './state/browser.state';
 import { CommandProviderService } from '../shared/services/command-provider.service';
+import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
+import { CommandType } from '../shared/enums/command-type.enum';
 
 @Component({
   selector: 'app-slickgrid-base',
@@ -17,6 +19,10 @@ import { CommandProviderService } from '../shared/services/command-provider.serv
 export class SlickgridBaseComponent implements OnInit, OnDestroy {
   public gridOptionsRef$ = new BehaviorSubject<GridOption>({});
   public colDefsRef$ = new BehaviorSubject<Column<any>[]>([]);
+  public selectedRowsCount: number;
+
+  @Input()
+  public naviOptions: Array<ISubNavigationOptions>
 
   @Input()
   public browserName: string;
@@ -75,16 +81,20 @@ export class SlickgridBaseComponent implements OnInit, OnDestroy {
   }
 
   onSelectedRowsChanged(e, args) {
-    if (Array.isArray(args.rows) && this.gridObj) {
-      if (args.rows.length === 1) {
-        const selectedRow = this.gridObj.getDataItem(args.rows[0]);
-        this.commandProviderService.setSelectedRowData(selectedRow);
+    this.naviOptions.forEach(nav => {
+      if (Array.isArray(args.rows) && this.gridObj) {
+        if (args.rows.length === 1) {
+          this.selectedRowsCount = 1;
+          const selectedRow = this.gridObj.getDataItem(args.rows[0]);
+          this.commandProviderService.setSelectedRowData(selectedRow);
+        }
+        this.selectedRowsCount = args.rows.length;
+        args.rows.forEach((idx: number) => {
+          const item = this.gridObj.getDataItem(idx);
+          this.commandProviderService.setSelectedRowsData(item);
+        });
       }
-      args.rows.forEach((idx: number) => {
-        const item = this.gridObj.getDataItem(idx);
-        this.commandProviderService.setSelectedRowsData(item);
-      });
-    }
+    })
   }
 
   gridStateChanged(gridStateChanges: GridStateChange) {

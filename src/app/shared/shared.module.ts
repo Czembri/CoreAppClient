@@ -3,6 +3,7 @@ import { HttpErrorDialogComponent } from "./errors/http-error-dialog/http-error-
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogService } from "./services/dialog.service";
 import { TranslateModule } from "@ngx-translate/core";
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { TranslateModule } from "@ngx-translate/core";
     imports: [
         MatDialogModule,
         TranslateModule,
+        DragDropModule
     ],
     providers: [DialogService,
         { provide: MatDialogRef, useValue: {} },

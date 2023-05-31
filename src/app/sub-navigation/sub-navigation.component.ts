@@ -1,5 +1,6 @@
-import { AfterContentInit, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ISubNavigationOptions } from './sub-nav.model';
+import { CommandType } from '../shared/enums/command-type.enum';
 
 @Component({
   selector: 'app-sub-navigation',
@@ -7,5 +8,11 @@ import { ISubNavigationOptions } from './sub-nav.model';
   styleUrls: ['./sub-navigation.component.css']
 })
 export class SubNavigationComponent{
-  @Input() naviOptions: Array<ISubNavigationOptions>
+  @Input()
+  public naviOptions: Array<ISubNavigationOptions>
+
+  @Input()
+  public rowsCount: number;
+
+  public commandType = CommandType;
 }

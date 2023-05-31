@@ -4,8 +4,9 @@ import { Actions, Store, ofActionCompleted } from '@ngxs/store';
 import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
 import { ContractorsState } from './state/contractors.state';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
-import { EditContractorsCommand } from './commands/edit.command';
-import { DeleteContracorsCommand } from './commands/delete.command';
+import { EditContractorsCommand } from './commands/edit-contractors.command';
+import { DeleteContractorsCommand } from './commands/delete-contractors.command';
+import { CommandType } from '../shared/enums/command-type.enum';
 
 @Component({
   selector: 'app-contractors',
@@ -25,10 +26,11 @@ export class ContractorsComponent implements OnInit, OnDestroy {
 
   constructor(
     private editContractorsCommand: EditContractorsCommand,
-    private deleteContractorsCommand: DeleteContracorsCommand,
+    private deleteContractorsCommand: DeleteContractorsCommand,
     private store: Store,
     private actions: Actions) {
     this.subNavigationOptions.push({
+      commandType: CommandType.noSelection,
       text: 'ADD',
       customLinkCssClasses: 'btn btn-success me-2',
       action: () => {
@@ -36,6 +38,7 @@ export class ContractorsComponent implements OnInit, OnDestroy {
       }
     },
     {
+      commandType: CommandType.singleSelection,
       text: 'EDIT',
       customLinkCssClasses: 'btn btn-primary me-2',
       action: () => {
@@ -44,6 +47,7 @@ export class ContractorsComponent implements OnInit, OnDestroy {
       }
     },
     {
+      commandType: CommandType.multiSelection,
       text: 'DELETE',
       customLinkCssClasses: 'btn btn-danger me-2',
       action: () => {
@@ -52,6 +56,7 @@ export class ContractorsComponent implements OnInit, OnDestroy {
       }
     },
     {
+      commandType: CommandType.singleSelection,
       text: 'OPEN_IN_POPUP',
       customLinkCssClasses: 'btn btn-warning me-2',
       action: () => {

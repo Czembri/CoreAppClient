@@ -6,7 +6,12 @@
 [mat-dialog-title] {
   margin: -24px -24px 0px -24px !important;
   padding: 10px 24px;
-  background: rgb(156, 52, 52);
+  background: rgb(194, 100, 100);
   color: #fff;
   cursor: move;
 }
+
+.mat-dialog-container {
+  position: relative;
+}
+

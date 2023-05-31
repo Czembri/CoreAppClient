@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorDialogComponent, ErrorMessageData } from '../errors/http-error-dialog/http-error-dialog.component';
+import { ComponentType } from "ngx-toastr";
 
 @Injectable({
     providedIn: 'root'
@@ -17,5 +18,9 @@ export class DialogService {
           content: content
         } as ErrorMessageData,
       });
+    }
+
+   public openDialog(component: ComponentType<any>, config: MatDialogConfig) {
+      this.dialog.open(component, config);
     }
 }

@@ -22,26 +22,26 @@ export class UserReceiptsComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject<void>();
 
   constructor(private store: Store, private actions: Actions) {
-    this.subNavigationOptions.push({
-      text: 'ADD',
-      customLinkCssClasses: 'btn btn-success me-2',
-      url: '/user-receipts/new',
-    },
-    {
-      text: 'EDIT',
-      customLinkCssClasses: 'btn btn-success me-2',
-      url: '',
-    },
-    {
-      text: 'DELETE',
-      customLinkCssClasses: 'btn btn-danger me-2',
-      url: '',
-    },
-    {
-      text: 'OPEN_IN_POPUP',
-      customLinkCssClasses: 'btn btn-warning me-2',
-      url: '',
-    });
+    // this.subNavigationOptions.push({
+    //   text: 'ADD',
+    //   customLinkCssClasses: 'btn btn-success me-2',
+    //   url: '/user-receipts/new',
+    // },
+    // {
+    //   text: 'EDIT',
+    //   customLinkCssClasses: 'btn btn-success me-2',
+    //   url: '',
+    // },
+    // {
+    //   text: 'DELETE',
+    //   customLinkCssClasses: 'btn btn-danger me-2',
+    //   url: '',
+    // },
+    // {
+    //   text: 'OPEN_IN_POPUP',
+    //   customLinkCssClasses: 'btn btn-warning me-2',
+    //   url: '',
+    // });
   }
 
   ngOnInit(): void {

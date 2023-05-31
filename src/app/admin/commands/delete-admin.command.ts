@@ -4,11 +4,11 @@ import { CommandProviderService } from 'src/app/shared/services/command-provider
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteContracorsCommand {
+export class DeleteAdminCommand {
   constructor(private commandProviderService: CommandProviderService) {}
 
   execute(): void {
-    const selectedRowData = this.commandProviderService.getSelectedRowData();
-    console.warn(selectedRowData, 'selectedRowData edit')
+    const selectedRowsData = this.commandProviderService.getSelectedRowsData();
+    console.warn(selectedRowsData, 'DeleteAdminCommand selectedRowData delete')
   }
 }

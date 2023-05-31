@@ -7,6 +7,7 @@ import { AngularSlickgridModule } from "angular-slickgrid";
 import { SlickgridBaseComponent } from "./slickgrid-base.component";
 import { BrowserState } from "./state/browser.state";
 import { CommonModule } from "@angular/common";
+import { SubNavigationModule } from "../sub-navigation/sub-navigation.module";
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CommonModule } from "@angular/common";
   ],
   imports: [
     CommonModule,
+    SubNavigationModule,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,

@@ -1,4 +1,8 @@
 <div class="container">
+  <ng-container>
+    <app-sub-navigation [rowsCount]="selectedRowsCount" [naviOptions]="naviOptions"></app-sub-navigation>
+  </ng-container>
+
   <ng-container *ngIf="(colDefsRef$ | async).length > 0">
     <angular-slickgrid
             gridId="grid"
