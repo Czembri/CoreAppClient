@@ -1,5 +1,10 @@
 <ul class="nav">
     <li *ngFor="let item of naviOptions">
-        <a class='{{item.customLinkCssClasses}}' href='{{item.url}}'>{{item.text | translate}}</a>
+      <ng-container *ngIf="item.url;else btn">
+        <a item.attribute class='{{item.customLinkCssClasses}}' href='{{item.url}}'>{{item.text | translate}}</a>
+      </ng-container>
+      <ng-template #btn>
+        <button item.attribute class='{{item.customLinkCssClasses}}' (click)="item.action()">{{item.text | translate}}</button>
+      </ng-template>
     </li>
 </ul>

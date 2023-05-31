@@ -4,6 +4,8 @@ import { Actions, Store, ofActionCompleted } from '@ngxs/store';
 import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
 import { ContractorsState } from './state/contractors.state';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import { EditContractorsCommand } from './commands/edit.command';
+import { DeleteContracorsCommand } from './commands/delete.command';
 
 @Component({
   selector: 'app-contractors',
@@ -21,26 +23,40 @@ export class ContractorsComponent implements OnInit, OnDestroy {
 
   private destroyed$ = new Subject<void>();
 
-  constructor(private store: Store, private actions: Actions) {
+  constructor(
+    private editContractorsCommand: EditContractorsCommand,
+    private deleteContractorsCommand: DeleteContracorsCommand,
+    private store: Store,
+    private actions: Actions) {
     this.subNavigationOptions.push({
       text: 'ADD',
       customLinkCssClasses: 'btn btn-success me-2',
-      url: '/contractors/new',
+      action: () => {
+        console.warn('add')
+      }
     },
     {
       text: 'EDIT',
-      customLinkCssClasses: 'btn btn-success me-2',
-      url: '',
+      customLinkCssClasses: 'btn btn-primary me-2',
+      action: () => {
+        console.warn('EDIT')
+        this.editContractorsCommand.execute();
+      }
     },
     {
       text: 'DELETE',
       customLinkCssClasses: 'btn btn-danger me-2',
-      url: '',
+      action: () => {
+        console.warn('DELETE')
+        this.deleteContractorsCommand.execute();
+      }
     },
     {
       text: 'OPEN_IN_POPUP',
       customLinkCssClasses: 'btn btn-warning me-2',
-      url: '',
+      action: () => {
+        console.warn('OPEN_IN_POPUP')
+      }
     });
   }
 

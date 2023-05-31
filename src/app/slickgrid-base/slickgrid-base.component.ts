@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Actions, ofActionCompleted, ofActionSuccessful, Select, Store } from '@ngxs/store';
-import { AngularGridInstance, Column, GridOption } from 'angular-slickgrid';
-import { BehaviorSubject, combineLatest, Observable, Subject, takeUntil } from 'rxjs';
+import { AngularGridInstance, Column, GridOption, GridStateChange } from 'angular-slickgrid';
+import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 import { defaultGridOptions } from '../shared/constants/slickgrid-defaults';
 import { GetBrowserInfo } from './state/browser.actions';
 import { BrowserState } from './state/browser.state';
+import { CommandProviderService } from '../shared/services/command-provider.service';
 
 @Component({
   selector: 'app-slickgrid-base',
@@ -40,7 +41,8 @@ export class SlickgridBaseComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store,
-    private actions$: Actions) {
+    private actions$: Actions,
+    private commandProviderService: CommandProviderService) {
       this.gridOptionsRef$.next(JSON.parse(JSON.stringify(defaultGridOptions)))
     }
 
@@ -68,13 +70,25 @@ export class SlickgridBaseComponent implements OnInit, OnDestroy {
 
   angularGridReady(angularGrid: AngularGridInstance) {
     this.angularGrid = angularGrid;
-    this.gridObj = angularGrid.slickGrid;
+    this.gridObj =  angularGrid && angularGrid.slickGrid || {};
     this.dataViewObj = angularGrid.dataView;
   }
 
-  onSelectedRowsChanged(e) {
-    // user clicked on the 1st column, multiple checkbox selection
-    console.log('multiple row checkbox selected', e);
+  onSelectedRowsChanged(e, args) {
+    if (Array.isArray(args.rows) && this.gridObj) {
+      if (args.rows.length === 1) {
+        const selectedRow = this.gridObj.getDataItem(args.rows[0]);
+        this.commandProviderService.setSelectedRowData(selectedRow);
+      }
+      args.rows.forEach((idx: number) => {
+        const item = this.gridObj.getDataItem(idx);
+        this.commandProviderService.setSelectedRowsData(item);
+      });
+    }
+  }
+
+  gridStateChanged(gridStateChanges: GridStateChange) {
+    console.log('gridStateChanged', gridStateChanges);
   }
 
   onCellClicked(e, args) {

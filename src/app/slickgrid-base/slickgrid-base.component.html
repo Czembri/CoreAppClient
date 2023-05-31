@@ -5,8 +5,9 @@
             [columnDefinitions]="colDefsRef$ | async"
             [gridOptions]="gridOptionsRef$ | async"
             [dataset]="dataSet | async"
-            (onAngularGridCreated)="angularGridReady($event)"
-            (onSelectedRowsChanged)="onSelectedRowsChanged($event)">
+            (onAngularGridCreated)="angularGridReady($event.detail)"
+            (onGridStateChanged)="gridStateChanged($event.detail)"
+            (onSelectedRowsChanged)="onSelectedRowsChanged($event.detail.eventData, $event.detail.args)">
   </angular-slickgrid>
   </ng-container>
 </div>

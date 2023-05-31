@@ -1,5 +1,7 @@
 export interface ISubNavigationOptions {
-    customLinkCssClasses: string;
-    text: string;
-    url: string;
+    customLinkCssClasses?: string;
+    attribute?: string;
+    text?: string;
+    url?: string;
+    action?:() => void;
 }
