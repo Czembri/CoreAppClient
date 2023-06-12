@@ -12,3 +12,15 @@ export class GetAdminViewInfoSuccess {
 export class GetAdminViewInfoFailed {
   static readonly type = '[ADMIN] Get admin view info failed';
 }
+
+export class SaveAdminDetails {
+  static readonly type = '[ADMIN] Save admin details';
+}
+
+export class SaveAdminDetailsSuccess {
+  static readonly type = '[ADMIN] Save admin details success';
+}
+
+export class SaveAdminDetailsSuccessFailed {
+  static readonly type = '[ADMIN] Save admin details success';
+}

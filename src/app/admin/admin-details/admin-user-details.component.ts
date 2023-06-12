@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import * as moment from "moment";
 import { Subject } from "rxjs";
 import { ICommandsDataTypeModel } from "src/app/shared/models/commands-data-type.model";
 
@@ -23,8 +24,8 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.adminForm = new FormGroup({
       login: new FormControl(''),
-      creationDate: new FormControl(''),
-      modificationDate: new FormControl(''),
+      creationDate: new FormControl({value: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'), disabled: true}),
+      modificationDate: new FormControl({value: '', disabled: true}),
       roles: new FormControl(''),
       firstName: new FormControl(''),
       lastName: new FormControl(''),
@@ -40,6 +41,6 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    //
+    console.warn(this.adminForm, 'formmm')
   }
 }

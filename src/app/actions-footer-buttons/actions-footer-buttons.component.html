@@ -1,4 +1,4 @@
 <mat-dialog-actions align="end" class="footer-buttons">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button mat-button mat-dialog-close>{{ leftButtonName }}</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>{{ rightButtonName }}</button>
 </mat-dialog-actions>

@@ -46,5 +46,7 @@
   "modificationDate": "Data modyfikacji",
   "firstName": "Imię",
   "lastName": "Nazwisko",
-  "roles": "Role"
+  "roles": "Role",
+  "CANCEL": "Anuluj",
+  "SAVE": "Zapisz"
 }

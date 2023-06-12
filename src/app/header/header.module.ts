@@ -3,6 +3,8 @@ import { TranslateModule } from "@ngx-translate/core";
 import { HeaderComponent } from "./header.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     imports: [
       TranslateModule,
       MatDialogModule,
-      DragDropModule
+      DragDropModule,
+      MatIconModule,
+      MatButtonModule
     ],
 })
 export class HeaderModule { }

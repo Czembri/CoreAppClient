@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpBackend, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
@@ -28,6 +28,9 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
 import { NavComponent } from './nav/nav.component';
 import { AccountService } from './_services/account.service';
 import { AdminGuardService } from './_services/admin-guard.service';
+import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+
 
 @NgModule({
   declarations: [
@@ -52,15 +55,16 @@ import { AdminGuardService } from './_services/admin-guard.service';
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
     }),
+    NgxsFormPluginModule.forRoot(),
     // NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
             useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
+            deps: [HttpBackend]
         }
-    })
+    }),
   ],
   entryComponents: [
     AppComponent,
@@ -89,6 +93,8 @@ import { AdminGuardService } from './_services/admin-guard.service';
 })
 export class AppModule { }
 
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
+export function HttpLoaderFactory(_httpBackend: HttpBackend) {
+  return new MultiTranslateHttpLoader(_httpBackend, [
+    { prefix: './assets/i18n/admin/', suffix: '.json' },
+  ]);
 }

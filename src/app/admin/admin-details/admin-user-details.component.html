@@ -1,60 +1,88 @@
 <header [title]="dialogData.titleKey"></header>
-<ng-container class="component-container">
+<div class="component-container">
   <form [formGroup]="adminForm" ngxsForm="AdminView.adminForm" (ngSubmit)="onSubmit()">
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="login">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="creationDate">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="modificationDate">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="roles">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="firstName">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="lastName">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="address">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="city">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="postalCode">
-      </mat-form-field>
-    </p>
+    <div class="row">
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.LOGIN' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.LOGIN' | translate }}" formControlName="login">
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}" formControlName="creationDate">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.MODIFICATION_DATE' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.MODIFICATION_DATE' | translate }}" formControlName="modificationDate">
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.ROLES' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.ROLES' | translate }}" formControlName="roles">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.FIRSTNAME' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.FIRSTNAME' | translate }}" formControlName="firstName">
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.LASTNAME' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.LASTNAME' | translate }}" formControlName="lastName">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.ADDRESS' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.ADDRESS' | translate }}" formControlName="address">
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.CITY' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.CITY' | translate }}" formControlName="city">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}" formControlName="postalCode">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
   </form>
-</ng-container>
-<actions-footer-buttons></actions-footer-buttons>
+</div>
+<actions-footer-buttons leftButtonName="{{ 'CANCEL' | translate }}" rightButtonName="{{ 'SAVE' | translate }}"></actions-footer-buttons>

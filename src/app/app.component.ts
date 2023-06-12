@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Actions, ofActionSuccessful, Store } from '@ngxs/store';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import {TranslateService} from "@ngx-translate/core";
+import { TranslatePartialLoader } from 'angular-translate-loader-partial';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +17,13 @@ export class AppComponent implements OnInit, OnDestroy {
   public receiptsData$ = new BehaviorSubject<string>('');
 
   constructor(private accountService: AccountService,
-    translate: TranslateService) {
-      translate.setDefaultLang('pl');
-      translate.use('pl');
+   private translateService: TranslateService) {
+    translateService.setDefaultLang('pl');
+    translateService.use('pl');
     }
 
   ngOnInit(): void {
     this.setCurrentUser();
-
     // report
     // this.store.dispatch(new GetUserReceipts());
     // this.actions$.pipe(
@@ -39,6 +38,8 @@ export class AppComponent implements OnInit, OnDestroy {
     //     );
     //     this.receiptsData$.next(reportSettings);
     //   })
+
+    this.translateService.getTranslation('pl').subscribe(ee => console.warn(ee))
   }
 
   ngOnDestroy(): void {

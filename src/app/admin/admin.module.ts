@@ -11,6 +11,8 @@ import { AdminComponent } from "./admin.component";
 import { AdminUserDetailsComponent } from "./admin-details/admin-user-details.component";
 import { HeaderModule } from "../header/header.module";
 import { ActionsFooterButtonsModule } from "../actions-footer-buttons/actions-footer-buttons.module";
+import { TranslateModule } from "@ngx-translate/core";
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ActionsFooterButtonsModule } from "../actions-footer-buttons/actions-fo
     SlickgridBaseModule,
     NgxsModule.forFeature([AdminState]),
     HeaderModule,
-    ActionsFooterButtonsModule
+    TranslateModule,
+    ActionsFooterButtonsModule,
+    NgxsFormPluginModule
   ]
 })
 export class AdminModule {}

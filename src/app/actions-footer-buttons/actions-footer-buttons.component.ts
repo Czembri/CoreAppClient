@@ -6,4 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./actions-footer-buttons.component.css']
 })
 export class ActionsFooterButtonsComponent {
+
+  @Input() public leftButtonName;
+  @Input() public rightButtonName;
 }

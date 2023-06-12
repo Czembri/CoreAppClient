@@ -1,0 +1,13 @@
+{
+  "ADMIN_DETAILS": {
+    "LOGIN": "Login",
+    "CREATION_DATE": "Creation date",
+    "MODIFICATION_DATE": "Modification date",
+    "ROLES": "User roles",
+    "FIRSTNAME": "First name",
+    "LASTNAME": "Last name",
+    "ADDRESS": "Address",
+    "CITY": "City",
+    "POSTAL_CODE": "Postal code"
+  }
+}
