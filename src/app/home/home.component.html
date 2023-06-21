@@ -22,7 +22,7 @@
                                                 placeholder="{{ 'PASSWORD' | translate }}" [(ngModel)]="password" name="password" required>
                                         </div>
 
-                                        <p class="small mb-5 pb-lg-2 "><a class="text-white-50" href="#!">{{ 'FORGOT_PASSWORD' | translate }}</a></p>
+                                        <p class="small mb-5 pb-lg-2 "><a class="text-white-50 navigation-link" (click)="redirectTo('reminder')">{{ 'FORGOT_PASSWORD' | translate }}</a></p>
 
                                         <button class="btn btn-outline-light btn-lg px-5" type="submit">{{ 'LOGIN' | translate }}</button>
                                     </form>
@@ -59,3 +59,5 @@
         </div>
     </div>
 </div>
+
+<mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>

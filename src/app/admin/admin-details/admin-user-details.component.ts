@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, PatternValidator, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import * as moment from "moment";
 import { Subject } from "rxjs";
 import { ICommandsDataTypeModel } from "src/app/shared/models/commands-data-type.model";
+import { passwordPattern, postalCodePattern } from "src/app/shared/patterns/validation-patterns";
+import { Role } from "src/app/shared/roles/enums/role.enum";
 
 @Component({
   selector: 'admin-user-details',
@@ -14,6 +16,12 @@ import { ICommandsDataTypeModel } from "src/app/shared/models/commands-data-type
 export class AdminUserDetailsComponent implements OnInit, OnDestroy {
 
   public adminForm: FormGroup;
+  public availableRoles = {
+    [Role.Admin]: 'ADMIN_DETAILS.ADMIN',
+    [Role.SuperAdmin]: 'ADMIN_DETAILS.SUPER_ADMIN',
+    [Role.Moderator]: 'ADMIN_DETAILS.MODERATOR',
+    [Role.Basic]: 'ADMIN_DETAILS.BASIC'
+  }
 
   private destroyed$ = new Subject<void>();
 
@@ -23,15 +31,16 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.adminForm = new FormGroup({
-      login: new FormControl(''),
+      login: new FormControl('', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(100)])),
+      password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(10)])),
       creationDate: new FormControl({value: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'), disabled: true}),
-      modificationDate: new FormControl({value: '', disabled: true}),
-      roles: new FormControl(''),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
+      modificationDate: new FormControl({value: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'), disabled: true}),
+      roles: new FormControl('', Validators.compose([Validators.required])),
+      firstName: new FormControl('', Validators.compose([Validators.required])),
+      lastName: new FormControl('', Validators.compose([Validators.required])),
       address: new FormControl(''),
       city: new FormControl(''),
-      postalCode: new FormControl(''),
+      postalCode: new FormControl('', Validators.compose([Validators.pattern(postalCodePattern)])),
     });
   }
 

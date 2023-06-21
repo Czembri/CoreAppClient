@@ -29,8 +29,8 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
     NgxsModule.forFeature([AdminState]),
     HeaderModule,
     TranslateModule,
+    NgxsFormPluginModule,
     ActionsFooterButtonsModule,
-    NgxsFormPluginModule
   ]
 })
 export class AdminModule {}

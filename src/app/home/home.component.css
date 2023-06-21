@@ -1,11 +1,11 @@
 html {
     height:100%;
   }
-  
+
   body {
     margin:0;
   }
-  
+
   .bg {
     animation:slide 3s ease-in-out infinite alternate;
     background-image: linear-gradient(-60deg, rgb(126, 143, 118) 50%, rgb(70, 75, 78) 50%);
@@ -17,16 +17,16 @@ html {
     top:0;
     z-index:-1;
   }
-  
+
   .bg2 {
     animation-direction:alternate-reverse;
     animation-duration:4s;
   }
-  
+
   .bg3 {
     animation-duration:5s;
   }
-  
+
   .content {
     background-color:rgba(255,255,255,.8);
     border-radius:.25em;
@@ -39,7 +39,7 @@ html {
     top:50%;
     transform:translate(-50%, -50%);
   }
-  
+
   @keyframes slide {
     0% {
       transform:translateX(-25%);
@@ -48,4 +48,17 @@ html {
       transform:translateX(25%);
     }
   }
+
+.center__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.navigation-link {
+  cursor: pointer;
+}
 

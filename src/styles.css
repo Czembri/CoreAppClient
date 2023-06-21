@@ -15,3 +15,10 @@
   position: relative;
 }
 
+.mat-form-field-ripple {
+  background-color: #ffffff !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: #ffffff !important;
+}

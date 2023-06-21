@@ -13,8 +13,8 @@
       <div class="col">
         <p>
           <mat-form-field appearance="fill">
-            <mat-label>{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}" formControlName="creationDate">
+            <mat-label>{{ 'ADMIN_DETAILS.PASSWORD' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.PASSWORD' | translate }}" formControlName="password" type="password">
           </mat-form-field>
         </p>
       </div>
@@ -32,7 +32,11 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.ROLES' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.ROLES' | translate }}" formControlName="roles">
+            <mat-select formControlName="roles">
+              <mat-option *ngFor="let role of availableRoles | keyvalue" [value]="role.key">
+                {{role.value | translate}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </p>
       </div>
@@ -74,11 +78,19 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col">
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}</mat-label>
             <input matInput placeholder="{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}" formControlName="postalCode">
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}" formControlName="creationDate">
           </mat-form-field>
         </p>
       </div>

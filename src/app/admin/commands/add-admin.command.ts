@@ -21,8 +21,8 @@ export class AddAdminCommand {
         data: selectedRowData,
         titleKey: 'ADD'
       },
-      width: '1200px',
-      height: '800px'
+      width: '1000px',
+      height: '600px'
     });
   }
 }

@@ -48,5 +48,7 @@
   "lastName": "Nazwisko",
   "roles": "Role",
   "CANCEL": "Anuluj",
-  "SAVE": "Zapisz"
+  "SAVE": "Zapisz",
+  "PROVIDE_EMAIL": "Wprowadź adres e-mail użyty do rejestracji:",
+  "EMAIL": "E-mail"
 }

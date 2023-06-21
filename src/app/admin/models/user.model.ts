@@ -6,6 +6,7 @@ export interface IApplicationUser {
   userName: string;
   creationDate: Moment;
   modificationDate: Moment;
+  password: string;
   userRole: IUserRole[];
   userInfo: IUserInfo;
 }
@@ -35,4 +36,5 @@ export interface IBrowserUserModel {
   address: string;
   city: string;
   postalCode: string;
+  password: string;
 }

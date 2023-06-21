@@ -48,5 +48,7 @@
   "lastName": "Last name",
   "roles": "Roles",
   "CANCEL": "Cancel",
-  "SAVE": "Save"
+  "SAVE": "Save",
+  "PROVIDE_EMAIL": "Please, provide an e-mail which has been used for registration:",
+  "EMAIL": "E-mail"
 }

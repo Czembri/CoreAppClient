@@ -3,8 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminGuardService } from './_services/admin-guard.service';
 import { AuthGuardService } from './_services/auth-guard.service';
+import { PasswordReminderComponent } from './home/password-reminder/password-reminder.component';
 
 const routes: Routes = [
+  {
+    path: 'reminder', component: PasswordReminderComponent
+  },
   {
     path: 'user-receipts',
     loadChildren: () => import('./user-receipts/user-receipts.module').then(m => m.UserReceiptsModule),

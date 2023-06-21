@@ -7,7 +7,7 @@ import { IRregistrationModel } from './registration.model';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   @Output() cancelRegister = new EventEmitter();
   model: IRregistrationModel;
   username: string;
@@ -20,16 +20,13 @@ export class RegisterComponent implements OnInit {
 
   constructor(private accountService: AccountService) { }
 
-  ngOnInit(): void {
-  }
-
   register() {
     this.createModel();
     this.accountService.register(this.model).subscribe({
       next: () => {
         this.cancel();
       },
-      error: error => console.log(error),
+      error: error => console.error(error),
     })
   }
 

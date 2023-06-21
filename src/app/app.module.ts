@@ -30,13 +30,16 @@ import { AccountService } from './_services/account.service';
 import { AdminGuardService } from './_services/admin-guard.service';
 import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { PasswordReminderComponent } from './home/password-reminder/password-reminder.component';
+import { ActionsFooterButtonsModule } from './actions-footer-buttons/actions-footer-buttons.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+     PasswordReminderComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +51,10 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
     SharedModule,
     ContractorsModule,
     RegisterModule,
-    // MaterialsModule,
+    MaterialsModule,
     ReactiveFormsModule,
     FormsModule,
+    ActionsFooterButtonsModule,
     WebdatarocksPivotModule,
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
@@ -87,7 +91,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
       multi: true,
     },
     // {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+  // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     // {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
   ],
 })
@@ -96,5 +100,6 @@ export class AppModule { }
 export function HttpLoaderFactory(_httpBackend: HttpBackend) {
   return new MultiTranslateHttpLoader(_httpBackend, [
     { prefix: './assets/i18n/admin/', suffix: '.json' },
+    { prefix: './assets/i18n/', suffix: '.json' },
   ]);
 }

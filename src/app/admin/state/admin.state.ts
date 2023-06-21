@@ -22,6 +22,7 @@ export interface AdminViewStateModel extends BaseState {
       creationDate: null,
       userName: '',
       modificationDate: null,
+      password: null,
       userInfo: {
         id: null,
         firstName: '',
@@ -56,7 +57,8 @@ export class AdminState {
         modificationDate: (moment(appUser.modificationDate)).format('DD-MMM-YYYY HH:mm:ss'),
         id: appUser.id,
         postalCode: appUser.userInfo.postalCode,
-        roles: appUser.userRole.map(role => role.role).toString()
+        roles: appUser.userRole.map(role => role.role).toString(),
+        password: appUser?.password
       }
    });
   }

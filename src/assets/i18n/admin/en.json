@@ -1,6 +1,7 @@
 {
   "ADMIN_DETAILS": {
     "LOGIN": "Login",
+    "PASSWORD": "Password",
     "CREATION_DATE": "Creation date",
     "MODIFICATION_DATE": "Modification date",
     "ROLES": "User roles",
@@ -8,6 +9,10 @@
     "LASTNAME": "Last name",
     "ADDRESS": "Address",
     "CITY": "City",
-    "POSTAL_CODE": "Postal code"
+    "POSTAL_CODE": "Postal code",
+    "ADMIN": "Admin",
+    "SUPER_ADMIN": "Super admin",
+    "MODERATOR": "Moderator",
+    "BASIC": "Basic user"
   }
 }
