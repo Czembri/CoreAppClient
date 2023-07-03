@@ -4,3 +4,10 @@ export enum Role {
   Moderator = 2,
   Basic = 3
 }
+
+export enum RoleString {
+  SuperAdmin = 'SuperAdmin',
+  Admin = 'Admin',
+  Moderator = 'Moderator',
+  Basic = 'Basic'
+}

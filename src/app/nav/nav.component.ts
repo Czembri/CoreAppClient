@@ -4,7 +4,7 @@ import { NavigationItem } from './models/nav-item.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
-import { Role } from '../shared/roles/enums/role.enum';
+import { Role, RoleString } from '../shared/roles/enums/role.enum';
 import { environment } from 'src/environments/environment';
 import { RoleService } from '../shared/roles/services/role.service';
 
@@ -27,7 +27,7 @@ export class NavComponent implements OnInit, OnDestroy {
     private router: Router) {}
 
   ngOnInit(): void {
-    //DEV
+    // DEV
     if (!environment.production) {
       this.translate.getTranslation(this.translate.currentLang)
         .pipe(takeUntil(this.destroyed$)).subscribe(translation => {
@@ -35,14 +35,14 @@ export class NavComponent implements OnInit, OnDestroy {
           class: 'nav-link',
           url: '/user-receipts',
           translation: translation['USER_RECEIPTS'],
-          visible: true
+          visible: this.roleService.hasRole(RoleString.SuperAdmin)
         });
 
         this.navItemsList.push(<NavigationItem>{
           class: 'nav-link',
           url: '/contractors',
           translation: translation['CONTRACTORS'],
-          visible: true
+          visible: this.roleService.hasRole(RoleString.SuperAdmin)
         });
       });
     }

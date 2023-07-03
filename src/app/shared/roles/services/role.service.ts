@@ -10,6 +10,6 @@ export class RoleService {
 
   public hasRole(role: string): boolean {
     const userRoles = this.accountService.getCurrentUserRoles();
-    return userRoles.includes(role);
+    return userRoles?.includes(role);
   }
 }
