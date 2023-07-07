@@ -1,0 +1,11 @@
+<div class="component-container">
+      <pre>
+        <textarea rows="20" [(ngModel)]="JSONValue"></textarea>
+        <!-- {{ JSONValue | json }} -->
+      </pre>
+    <button (click)="accept()">Accept</button>
+    <button (click)="generateDescription()">Generate product description</button>
+
+
+    <img [src]="sanitizer.bypassSecurityTrustUrl(imagePath$ | async)">
+</div>

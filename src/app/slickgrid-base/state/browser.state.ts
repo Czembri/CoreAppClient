@@ -55,6 +55,9 @@ export class BrowserState {
         columnSettings.forEach(col => {
           col.name = this.translate.instant(col.field);
         });
+
+        console.warn(browser.gridOptions)
+
         ctx.setState({
           browserName: browser.name,
           columnDefinitions: columnSettings,

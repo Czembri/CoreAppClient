@@ -1,0 +1,23 @@
+[
+  {
+    "id": "id",
+    "name": "id",
+    "field": "id",
+    "sortable": true,
+    "width":20
+  },
+  {
+    "id": "name",
+    "name": "name",
+    "field": "name",
+    "sortable": true,
+    "width":60
+  },
+  {
+    "id": "description",
+    "name": "description",
+    "field": "description",
+    "sortable": true,
+    "width":100
+  }
+]

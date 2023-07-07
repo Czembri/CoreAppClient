@@ -32,6 +32,7 @@ import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { PasswordReminderComponent } from './home/password-reminder/password-reminder.component';
 import { ActionsFooterButtonsModule } from './actions-footer-buttons/actions-footer-buttons.module';
+import { ProductsModule } from './products/product.module';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ActionsFooterButtonsModule } from './actions-footer-buttons/actions-foo
             deps: [HttpBackend]
         }
     }),
+    ProductsModule
   ],
   entryComponents: [
     AppComponent,
