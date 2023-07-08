@@ -1,18 +1,17 @@
+import { Moment } from "moment";
+
 export interface IProduct {
   id: number;
   name: string;
-  image: string;
+  image?: string;
   description: string;
-  productProperties: IProductProperties;
+  modificationDate: Moment;
+  creationDate: Moment;
+  productProperty: IProductProperty[];
 }
 
-export interface IProductProperties {
+export interface IProductProperty {
   id: number;
-  width: string;
-  height: string;
-  depth: string;
-  color: string;
-  shape: string;
-  purpose: string;
-  switchType: string;
+  name: string;
+  value: string;
 }

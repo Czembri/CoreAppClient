@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Actions, Select, Store, ofActionCompleted } from '@ngxs/store';
-import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { Actions, Store, ofActionCompleted } from '@ngxs/store';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
 import { GetProducts } from './state/products.actions';
 import { ProductsState } from './state/products.state';

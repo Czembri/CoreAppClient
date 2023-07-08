@@ -6,6 +6,7 @@ import { IApplicationUser, IBrowserUserModel } from '../models/user.model';
 import { GetAdminViewInfo, GetAdminViewInfoFailed, GetAdminViewInfoSuccess } from './admin.actions';
 import { AdminService } from 'src/app/_services/admin.service';
 import * as moment from 'moment';
+import { STANDARD_DATE_TIME_FORMAT } from 'src/app/shared/constants/date-formats';
 
 export interface AdminViewStateModel extends BaseState {
   users: IApplicationUser[],
@@ -50,11 +51,11 @@ export class AdminState {
       return {
         address: appUser.userInfo.address,
         city: appUser.userInfo.city,
-        creationDate: (moment(appUser.creationDate)).format('DD-MMM-YYYY HH:mm:ss'),
+        creationDate: (moment(appUser.creationDate)).format(STANDARD_DATE_TIME_FORMAT),
         firstName: appUser.userInfo.firstName,
         lastName: appUser.userInfo.lastName,
         login: appUser.userName,
-        modificationDate: (moment(appUser.modificationDate)).format('DD-MMM-YYYY HH:mm:ss'),
+        modificationDate: (moment(appUser.modificationDate)).format(STANDARD_DATE_TIME_FORMAT),
         id: appUser.id,
         postalCode: appUser.userInfo.postalCode,
         roles: appUser.userRole.map(role => role.role).toString(),
@@ -65,9 +66,9 @@ export class AdminState {
 
   @Action(GetAdminViewInfo)
   public getAdminViewInfo(ctx: StateContext<AdminViewStateModel>) {
+    const users = new Array<IApplicationUser>;
     return this.adminService.getUsersInfoAdminView().pipe(
       map(adminInfos => {
-        const users = new Array<IApplicationUser>;
         adminInfos.forEach(dto => {
           users.push({
             creationDate: dto.creationDate,

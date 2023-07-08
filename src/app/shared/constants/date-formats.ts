@@ -1,0 +1,1 @@
+export const STANDARD_DATE_TIME_FORMAT = 'DD-MMM-YYYY HH:mm:ss';

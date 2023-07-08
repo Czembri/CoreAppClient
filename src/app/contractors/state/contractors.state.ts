@@ -7,6 +7,7 @@ import { CompaniesService } from 'src/app/_services/companies.service';
 import { GetContractors, GetContractorsFailed, GetContractorsSuccess } from './contractors.actions';
 import * as moment from 'moment';
 import { TranslationsService } from 'src/app/_services/translations.service';
+import { STANDARD_DATE_TIME_FORMAT } from 'src/app/shared/constants/date-formats';
 
 export interface ContractorsStateModel extends BaseState {
   id: number;
@@ -48,7 +49,7 @@ export class ContractorsState {
       city: dto.city,
       postalCode: dto.postalCode,
       nip: dto.nip,
-      created: (moment(dto.created)).format('DD-MMM-YYYY HH:mm:ss')
+      created: (moment(dto.created)).format(STANDARD_DATE_TIME_FORMAT)
     }))
   }
 

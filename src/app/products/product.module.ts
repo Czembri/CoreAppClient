@@ -8,6 +8,9 @@ import { SlickgridBaseModule } from '../slickgrid-base/slickgrid-base.module';
 import { NgxsModule } from '@ngxs/store';
 import { ProductsState } from './state/products.state';
 import { ProductsComponent } from './products.component';
+import { MaterialsModule } from '../materials.module';
+import { ActionsFooterButtonsModule } from '../actions-footer-buttons/actions-footer-buttons.module';
+import { HeaderModule } from '../header/header.module';
 
 
 @NgModule({
@@ -20,9 +23,12 @@ import { ProductsComponent } from './products.component';
     ReactiveFormsModule,
     ProductsRoutingModule,
     CommonModule,
+    MaterialsModule,
     TranslateModule,
     FormsModule,
     SlickgridBaseModule,
+    HeaderModule,
+    ActionsFooterButtonsModule,
     NgxsModule.forFeature([ProductsState]),
   ],
 })

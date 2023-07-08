@@ -23,7 +23,6 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule,
     MaterialsModule,
     SlickgridBaseModule,
     NgxsModule.forFeature([AdminState]),

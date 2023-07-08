@@ -19,5 +19,19 @@
     "field": "description",
     "sortable": true,
     "width":100
+  },
+  {
+    "id": "modificationDate",
+    "name": "modificationDate",
+    "field": "modificationDate",
+    "sortable": true,
+    "width":40
+  },
+  {
+    "id": "creationDate",
+    "name": "creationDate",
+    "field": "modificationDate",
+    "sortable": true,
+    "width":40
   }
 ]

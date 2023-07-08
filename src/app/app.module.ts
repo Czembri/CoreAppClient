@@ -102,6 +102,7 @@ export class AppModule { }
 export function HttpLoaderFactory(_httpBackend: HttpBackend) {
   return new MultiTranslateHttpLoader(_httpBackend, [
     { prefix: './assets/i18n/admin/', suffix: '.json' },
+    { prefix: './assets/i18n/products/', suffix: '.json' },
     { prefix: './assets/i18n/', suffix: '.json' },
   ]);
 }

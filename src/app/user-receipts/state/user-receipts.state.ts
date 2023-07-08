@@ -7,6 +7,7 @@ import { IReceiptPosition, PaymentInfo } from 'src/app/_models/receipt.model';
 import { ReceiptsService } from 'src/app/_services/receipts.service';
 import { GetUserReceipts, GetUserReceiptsFailed, GetUserReceiptsSuccess } from './user-receipts.actions';
 import * as moment from 'moment';
+import { STANDARD_DATE_TIME_FORMAT } from 'src/app/shared/constants/date-formats';
 
 export interface UserReceiptsStateModel extends BaseState {
   id: number;
@@ -62,7 +63,7 @@ export class UserReceiptsState {
       map(receipts => {
         return receipts.map(dto => <UserReceiptsStateModel>{
           id: dto.id,
-          created: (moment(dto.created)).format('DD-MMM-YYYY HH:mm:ss'),
+          created: (moment(dto.created)).format(STANDARD_DATE_TIME_FORMAT),
           payment: dto.paymentInfo,
           positionsCount: dto.positions.length,
           positions: dto.positions,

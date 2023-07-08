@@ -5,6 +5,10 @@ import { ProductsService } from 'src/app/_services/products.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ICommandsDataTypeModel } from 'src/app/shared/models/commands-data-type.model';
+import { Store } from '@ngxs/store';
+import { GetProduct } from '../state/products.actions';
 
 @Component({
   selector: 'app-product-details',
@@ -15,6 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
+  public productForm: FormGroup;
   public JSONValue: string;
   public product: IProduct;
   public imagePath$ = new BehaviorSubject<string>('');
@@ -23,22 +28,28 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   private routeId: number;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: ICommandsDataTypeModel,
     private productsService: ProductsService,
     private cdr: ChangeDetectorRef,
     public sanitizer: DomSanitizer,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private store: Store) {
+      // this.routeId = Number(this.route.snapshot.paramMap.get('id') ?? this.data.data.id);
+      // forkJoin([this.productsService.getProduct(this.routeId), this.productsService.getProductImage(this.routeId)])
+      //   .pipe(takeUntil(this.destroyed$)).subscribe(([product, image]) => {
+      //     this.JSONValue = JSON.stringify(product);
+      //     this.product = product;
+      //     var base64 = this._arrayBufferToBase64(image);
+      //     // TODO displaying an image
+      //     this.imagePath$.next('data:image/jpg;base64, ' + base64);
+      //   this.cdr.detectChanges();
+      // });
+    }
 
   public ngOnInit(): void {
-    this.routeId = Number(this.route.snapshot.paramMap.get('id') ?? this.data.data.id);
-    forkJoin([this.productsService.getProduct(this.routeId), this.productsService.getProductImage(this.routeId)])
-      .pipe(takeUntil(this.destroyed$)).subscribe(([product, image]) => {
-        this.JSONValue = JSON.stringify(product);
-        this.product = product;
-        var base64 = this._arrayBufferToBase64(image);
-        // TODO displaying an image
-        this.imagePath$.next('data:image/jpg;base64, ' + base64);
-      this.cdr.detectChanges();
+    this.productForm = new FormGroup({
+      name: new FormControl(undefined, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(100)])),
+      description: new FormControl(undefined, Validators.compose([Validators.required, Validators.maxLength(1000)])),
     });
   }
 
@@ -70,6 +81,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         this.imagePath$.next('data:image/jpg;base64, ' + base64);
         this.cdr.detectChanges();
       })
+  }
+
+  public onSubmit() {
+
   }
 
   private _arrayBufferToBase64(buffer) {

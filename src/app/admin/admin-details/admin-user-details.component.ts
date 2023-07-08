@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, FormGroup, PatternValidator, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import * as moment from "moment";
 import { Subject } from "rxjs";
 import { ICommandsDataTypeModel } from "src/app/shared/models/commands-data-type.model";
-import { passwordPattern, postalCodePattern } from "src/app/shared/patterns/validation-patterns";
+import { postalCodePattern } from "src/app/shared/patterns/validation-patterns";
 import { Role } from "src/app/shared/roles/enums/role.enum";
 
 @Component({
@@ -26,8 +26,7 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject<void>();
 
   constructor(@Inject(MAT_DIALOG_DATA)
-  public dialogData: ICommandsDataTypeModel,
-  public dialogRef: MatDialogRef<AdminUserDetailsComponent>) {}
+  public dialogData: ICommandsDataTypeModel) {}
 
   ngOnInit(): void {
     this.adminForm = new FormGroup({
@@ -50,6 +49,6 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.warn(this.adminForm, 'formmm')
+
   }
 }
