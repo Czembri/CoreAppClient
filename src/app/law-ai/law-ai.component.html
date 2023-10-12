@@ -1,0 +1,33 @@
+<div class="general-container">
+  <div class="response-container">
+    <!-- {{ response$ | async }} -->
+    <div class="row">
+      <div class="col">
+        <div class="response">
+          <ng-container *ngIf="response$ | async as response">
+            <span class="response-title">{{ 'LAW_AI_VIEW.RESPONSE_LABEL' | translate }}</span>
+            <p class="response">{{ response }}</p>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>
+  </div>
+  <div class="law-container">
+    <form [formGroup]="lawForm" class="law-form">
+      <mat-form-field style="width: 50em;color: white;" appearance="fill">
+        <mat-label>{{ 'LAW_AI_VIEW.TEXT_LABEL' | translate }}</mat-label>
+        <textarea matInput
+              formControlName="query"
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="2"
+              cdkAutosizeMaxRows="5"
+              (keyup.enter)="submitQuery()"></textarea>
+          <button mat-fab extended (click)="submitQuery()">
+            <mat-icon><i class="fa-solid fa-magnifying-glass"></i></mat-icon>
+          </button>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

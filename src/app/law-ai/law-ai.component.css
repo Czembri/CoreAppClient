@@ -1,0 +1,35 @@
+.general-container {
+  height: 98.6%;
+  background-color: rgb(54, 54, 54);
+  border: 10px solid #20c997;
+}
+
+.law-container {
+  /* height: 98.6%; */
+  width: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  max-height: 10rem;
+}
+
+.law-form {
+  margin: 2em;
+  max-height: 8em;
+}
+
+button {
+  float: right;
+  margin-top: 0.8rem;
+}
+
+.response-container {
+  height: 70%;
+  margin-top: 5%;
+}
+
+.response {
+  color: white;
+  margin-left: 10em;
+  margin-right: 10em;
+}

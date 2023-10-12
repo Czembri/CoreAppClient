@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProduct } from '../_models/product.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,15 @@ export class ProductsService {
     return this.http.get<any>(`${this.baseUrl}products/${id}/image`, {
       'responseType'  : 'arraybuffer' as 'json'
     });
+  }
+
+
+  getProductImage2(id: number) {
+    return this.http.get<any>(`${this.baseUrl}products/${id}/image2`);
+  }
+
+  getProductImage3(id: number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}products/${id}/image`, { responseType: 'blob' });
   }
 
   updateProduct(product: IProduct) {

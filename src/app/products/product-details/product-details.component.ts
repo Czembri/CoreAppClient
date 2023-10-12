@@ -2,7 +2,7 @@ import { IProduct } from './../../_models/product.model';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, Inject } from '@angular/core';
 import { Subject, takeUntil, BehaviorSubject, forkJoin } from 'rxjs';
 import { ProductsService } from 'src/app/_services/products.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   public productForm: FormGroup;
   public JSONValue: string;
   public product: IProduct;
-  public imagePath$ = new BehaviorSubject<string>('');
+  public imagePath$ = new BehaviorSubject<SafeUrl>(undefined);
 
   private destroyed$ = new Subject<void>();
   private routeId: number;
@@ -33,17 +33,23 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     public sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private store: Store) {
-      // this.routeId = Number(this.route.snapshot.paramMap.get('id') ?? this.data.data.id);
-      // forkJoin([this.productsService.getProduct(this.routeId), this.productsService.getProductImage(this.routeId)])
-      //   .pipe(takeUntil(this.destroyed$)).subscribe(([product, image]) => {
-      //     this.JSONValue = JSON.stringify(product);
-      //     this.product = product;
-      //     var base64 = this._arrayBufferToBase64(image);
-      //     // TODO displaying an image
-      //     this.imagePath$.next('data:image/jpg;base64, ' + base64);
-      //   this.cdr.detectChanges();
-      // });
+    private store: Store,
+    domSanitizer: DomSanitizer) {
+      this.routeId = Number(this.route.snapshot.paramMap.get('id') ?? this.data.data.id);
+      forkJoin([this.productsService.getProduct(this.routeId), this.productsService.getProductImage3(this.routeId)])
+        .pipe(takeUntil(this.destroyed$)).subscribe(([product, image]) => {
+          this.JSONValue = JSON.stringify(product);
+          this.product = product;
+          // var base64 = this._arrayBufferToBase64(image);
+          // let TYPED_ARRAY = new Uint8Array(image);
+          // const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
+          //   return data + String.fromCharCode(byte);
+          //   }, '');
+          //   let base64String = btoa(STRING_CHAR);
+            this.createImageFromBlob(image);
+          // this.imagePath$.next(domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64, '  + base64));
+          this.cdr.detectChanges();
+      });
     }
 
   public ngOnInit(): void {
@@ -84,7 +90,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-
+    // TODO
   }
 
   private _arrayBufferToBase64(buffer) {
@@ -95,5 +101,16 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
        binary += String.fromCharCode(bytes[i]);
     }
     return window.btoa(binary);
+  }
+
+  private createImageFromBlob(image: Blob): void {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      this.imagePath$.next(reader.result);
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
   }
 }

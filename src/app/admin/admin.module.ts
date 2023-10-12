@@ -17,7 +17,6 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 @NgModule({
   declarations: [AdminComponent, AdminUserDetailsComponent],
-  entryComponents: [],
   imports: [
     AdminRoutingModule,
     CommonModule,

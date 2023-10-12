@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ActionsFooterButtonsComponent {
 
-  @Input() public leftButtonName;
-  @Input() public rightButtonName;
+  @Input() public leftButtonName: string;
+  @Input() public rightButtonName: string;
 }

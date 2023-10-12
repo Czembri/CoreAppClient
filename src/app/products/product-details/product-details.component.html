@@ -12,26 +12,30 @@
 
 
 <header [title]="data.titleKey"></header>
-<div class="component-container">
-  <form [formGroup]="productForm" ngxsForm="Products.productForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col">
-        <p>
-          <mat-form-field class="width-100" appearance="fill">
-            <mat-label>{{ 'PRODUCT_DETAILS.NAME' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'PRODUCT_DETAILS.NAME' | translate }}" formControlName="name">
-          </mat-form-field>
-        </p>
+  <div class="component-container">
+    <form [formGroup]="productForm" ngxsForm="Products.productForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col">
+          <p>
+            <mat-form-field class="width-100" appearance="fill">
+              <mat-label>{{ 'PRODUCT_DETAILS.NAME' | translate }}</mat-label>
+              <input matInput placeholder="{{ 'PRODUCT_DETAILS.NAME' | translate }}" formControlName="name">
+            </mat-form-field>
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            <mat-form-field class="width-100" appearance="fill">
+              <mat-label>{{ 'PRODUCT_DETAILS.DESCRIPTION' | translate }}</mat-label>
+              <input matInput placeholder="{{ 'PRODUCT_DETAILS.DESCRIPTION' | translate }}" formControlName="description">
+            </mat-form-field>
+          </p>
+        </div>
       </div>
-      <div class="col">
-        <p>
-          <mat-form-field class="width-100" appearance="fill">
-            <mat-label>{{ 'PRODUCT_DETAILS.DESCRIPTION' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'PRODUCT_DETAILS.DESCRIPTION' | translate }}" formControlName="description">
-          </mat-form-field>
-        </p>
-      </div>
+    </form>
+    <button (click)="generateImage()">Generate image</button>
+    <div class="image-contaner">
+      <img [src]="imagePath$ | async" alt="Product">
     </div>
-  </form>
-</div>
+  </div>
 <actions-footer-buttons leftButtonName="{{ 'CANCEL' | translate }}" rightButtonName="{{ 'SAVE' | translate }}"></actions-footer-buttons>

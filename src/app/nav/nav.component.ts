@@ -44,6 +44,13 @@ export class NavComponent implements OnInit, OnDestroy {
           translation: translation['CONTRACTORS'],
           visible: this.roleService.hasRole(RoleString.SuperAdmin)
         });
+
+        this.navItemsList.push(<NavigationItem>{
+          class: 'nav-link',
+          url: '/law-ai',
+          translation: translation['LAW-AI'],
+          visible: this.roleService.hasRole(RoleString.Admin)
+        });
       });
     }
   }

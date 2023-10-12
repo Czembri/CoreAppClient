@@ -22,7 +22,6 @@ export class AddAdminCommand {
         titleKey: 'ADD'
       },
       width: '1000px',
-      height: '600px'
     });
   }
 }

@@ -30,6 +30,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'law-ai',
+    loadChildren: () => import('./law-ai/law-ai.module').then(m => m.LawAIModule),
+    canActivate: [AuthGuardService]
+  },
+  {
     path: '', component: HomeComponent
   },
   {
