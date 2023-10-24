@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/
 import { FormControl, FormGroup } from "@angular/forms";
 import { Actions, Store, ofActionCompleted } from "@ngxs/store";
 import { BehaviorSubject, Subject, finalize, map, tap } from "rxjs";
-import { PostConstitutionAi } from "./state/law-ai.actions";
+import { ClearMemory, PostConstitutionAi } from "./state/law-ai.actions";
 import { LawAIState } from "./state/law-ai.state";
 
 @Component({
@@ -34,6 +34,7 @@ export class LawAIComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroyed$.complete();
     this.destroyed$.next();
+    this.store.dispatch(new ClearMemory());
   }
 
   submitQuery(): void {

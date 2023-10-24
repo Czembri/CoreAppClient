@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { BaseState } from "src/app/_models/base-state.model"
 import { LawAIService } from "../services/law-ai.service";
-import { PostConstitutionAi, PostConstitutionAiFailed, PostConstitutionAiSuccess } from "./law-ai.actions";
+import { ClearMemory, LoadData, PostConstitutionAi, PostConstitutionAiFailed, PostConstitutionAiSuccess } from "./law-ai.actions";
 import { catchError, map, tap, throwError } from "rxjs";
 
 export interface LawAIStateModel extends BaseState {
@@ -43,5 +43,23 @@ export class LawAIState {
     ctx.setState({
       response: response
     });
+  }
+
+  @Action(ClearMemory)
+  clearMemory(ctx: StateContext<LawAIStateModel>) {
+    return this.lawAIService.clearMemory().pipe(
+      tap(res => ctx.setState({
+        response: res.response
+      })),
+    );
+  }
+
+  @Action(LoadData)
+  loadData(ctx: StateContext<LawAIStateModel>) {
+    return this.lawAIService.loadData().pipe(
+      tap(res => ctx.setState({
+        response: res.response
+      })),
+    );
   }
 }

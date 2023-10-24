@@ -13,4 +13,12 @@ export class LawAIService {
   postQuery(query: string): Observable<ResponseModel> {
     return this.http.post<ResponseModel>(`${this.baseUrl}constitution-ai`, { query: query } as PostModel);
   }
+
+  loadData(): Observable<ResponseModel> {
+    return this.http.get<ResponseModel>(`${this.baseUrl}constitution-ai/load-data`);
+  }
+
+  clearMemory(): Observable<ResponseModel> {
+    return this.http.get<ResponseModel>(`${this.baseUrl}constitution-ai/clear-memory`);
+  }
 }

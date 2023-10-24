@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import {TranslateService} from "@ngx-translate/core";
 import { TranslatePartialLoader } from 'angular-translate-loader-partial';
 import { Route, Router } from '@angular/router';
+import { LawAIService } from './law-ai/services/law-ai.service';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,13 @@ export class AppComponent implements OnInit, OnDestroy {
   public receiptsData$ = new BehaviorSubject<string>('');
 
   constructor(private accountService: AccountService,
-   private translateService: TranslateService,
-   private router: Router) {
+   private router: Router,
+   translateService: TranslateService,
+   lawAIService: LawAIService) {
     translateService.setDefaultLang('pl');
     translateService.use('pl');
-    }
+    lawAIService.loadData().pipe(take(1)).subscribe();
+  }
 
   ngOnInit(): void {
     this.setCurrentUser();
