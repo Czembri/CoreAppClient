@@ -4,13 +4,16 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { DialogService } from "./services/dialog.service";
 import { TranslateModule } from "@ngx-translate/core";
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { EvenOddPipe } from './pipes/even-odd.pipe';
 
 @NgModule({
     declarations: [
         HttpErrorDialogComponent,
+        EvenOddPipe,
     ],
     exports: [
-        HttpErrorDialogComponent
+        HttpErrorDialogComponent,
+        EvenOddPipe,
     ],
     entryComponents: [
         HttpErrorDialogComponent

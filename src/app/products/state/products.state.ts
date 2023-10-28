@@ -29,7 +29,8 @@ export interface ProductsStateModel extends BaseState {
     productForm: {
       model: undefined
     },
-    errors: []
+    errors: [],
+    isLoading: false,
   }
 })
 
@@ -96,7 +97,7 @@ export class ProductsState {
 
   @Action(GetProductsSuccess)
   getProductsSuccess(ctx: StateContext<ProductsStateModel>, { products }: GetProductsSuccess) {
-    ctx.setState({
+    ctx.patchState({
       products: products
     });
   }

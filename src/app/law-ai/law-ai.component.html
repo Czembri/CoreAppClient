@@ -1,16 +1,14 @@
 <div class="general-container">
   <div class="response-container">
-    <!-- {{ response$ | async }} -->
-    <div class="row">
-      <div class="col">
-        <div class="response">
-          <ng-container *ngIf="response$ | async as response">
-            <span class="response-title">{{ 'LAW_AI_VIEW.RESPONSE_LABEL' | translate }}</span>
-            <p class="response">{{ response }}</p>
-          </ng-container>
-        </div>
+      <div class="response">
+        <ng-container *ngFor="let item of data$ | async as data; let i = index">
+          <div class="chat-item"  [ngClass]="{'question': i % 2 === 0 || i === 0, 'answer': i % 2 === 1 || i === 1}">
+            <ng-container [ngTemplateOutlet]="i % 2 === 0 || i === 0 ? queryTemplate : answerTemplate"
+              [ngTemplateOutletContext]="{item: item}">
+            </ng-container>
+          </div>
+        </ng-container>
       </div>
-    </div>
     <mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>
   </div>
   <div class="law-container">
@@ -18,6 +16,7 @@
       <mat-form-field style="width: 50em;color: white;" appearance="fill">
         <mat-label>{{ 'LAW_AI_VIEW.TEXT_LABEL' | translate }}</mat-label>
         <textarea matInput
+              [disabled]="isLoading$ | async"
               formControlName="query"
               cdkTextareaAutosize
               #autosize="cdkTextareaAutosize"
@@ -31,3 +30,14 @@
     </form>
   </div>
 </div>
+
+<ng-template #answerTemplate let-item="item">
+    <span class="response-title">{{ 'LAW_AI_VIEW.RESPONSE_LABEL' | translate }}</span>
+    <p class="response-item">{{ item }}</p>
+</ng-template>
+
+<ng-template #queryTemplate let-item="item">
+  <span class="response-title">{{ 'LAW_AI_VIEW.QUERY_LABEL' | translate }}</span>
+  <p class="query-item">{{ item }}</p>
+</ng-template>
+

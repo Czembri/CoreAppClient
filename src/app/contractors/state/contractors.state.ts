@@ -31,7 +31,8 @@ export interface ContractorsStateModel extends BaseState {
     postalCode: '',
     nip: '',
     created: null,
-  }]
+    isLoading: false,
+  }],
 })
 
 @Injectable()

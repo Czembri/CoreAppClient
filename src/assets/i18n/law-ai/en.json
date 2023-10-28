@@ -1,6 +1,7 @@
 {
   "LAW_AI_VIEW" : {
     "TEXT_LABEL": "Ask a Lawyer...",
-    "RESPONSE_LABEL": "Answer:"
+    "RESPONSE_LABEL": "Answer: ",
+    "QUERY_LABEL": "Question: "
   }
 }

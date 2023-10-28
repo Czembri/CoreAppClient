@@ -24,12 +24,55 @@ button {
 }
 
 .response-container {
+  max-height: 70%;
   height: 70%;
+  overflow: auto;
   margin-top: 5%;
+  margin: 1em;
 }
 
 .response {
   color: white;
   margin-left: 10em;
   margin-right: 10em;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-item {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%; /* Set a maximum width for the chat items */
+}
+
+.question {
+  align-self: flex-end;
+  background-color: #20c997;
+  color: white;
+}
+
+.answer {
+  align-self: flex-start;
+  background-color: #f2f2f2;
+  color: black;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }

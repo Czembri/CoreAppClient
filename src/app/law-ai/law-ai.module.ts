@@ -2,14 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TranslateModule } from '@ngx-translate/core';
-import { SlickgridBaseModule } from '../slickgrid-base/slickgrid-base.module';
 import { MaterialsModule } from '../materials.module';
-import { ActionsFooterButtonsModule } from '../actions-footer-buttons/actions-footer-buttons.module';
 import { HeaderModule } from '../header/header.module';
 import { LawAIComponent } from './law-ai.component';
 import { LawAIRoutingModule } from './law-ai-routng.module';
 import { LawAIState } from './state/law-ai.state';
 import { NgxsModule } from '@ngxs/store';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -25,6 +24,7 @@ import { NgxsModule } from '@ngxs/store';
     FormsModule,
     HeaderModule,
     LawAIRoutingModule,
+    SharedModule,
     NgxsModule.forFeature([LawAIState]),
   ],
 })

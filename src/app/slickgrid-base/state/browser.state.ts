@@ -22,6 +22,7 @@ export interface BrowserStateModel extends BaseState {
     columnDefinitions: [],
     gridOptions: {},
     data: [],
+    isLoading: false,
   }
 })
 
@@ -56,7 +57,7 @@ export class BrowserState {
           col.name = this.translate.instant(col.field);
         });
 
-        ctx.setState({
+        ctx.patchState({
           browserName: browser.name,
           columnDefinitions: columnSettings,
           gridOptions: JSON.parse(browser.gridOptions)

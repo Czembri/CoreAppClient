@@ -30,7 +30,8 @@ export interface UserReceiptsStateModel extends BaseState {
     positionsCount: 0,
     receiptNumber: '',
     shop: null,
-    total: ''
+    total: '',
+    isLoading: false,
   }]
 })
 

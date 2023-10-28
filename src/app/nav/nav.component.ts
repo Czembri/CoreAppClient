@@ -66,7 +66,6 @@ export class NavComponent implements OnInit, OnDestroy {
 
   goTo(url: string) {
     // DEV!!
-    this.router.navigate([url]).then(
-      () => window.location.reload());
+    this.router.navigate([url]);
   }
 }

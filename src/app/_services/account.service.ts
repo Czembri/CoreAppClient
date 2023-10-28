@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
 import { ReplaySubject } from 'rxjs';
 import { IRregistrationModel } from '../register/registration.model';
-import { Role } from '../shared/roles/enums/role.enum';
 
 @Injectable({
   providedIn: 'root'

@@ -37,7 +37,8 @@ export interface AdminViewStateModel extends BaseState {
     adminForm: {
       model: undefined,
     },
-    errors: []
+    errors: [],
+    isLoading: false,
   }
 })
 
@@ -101,7 +102,7 @@ export class AdminState {
 
   @Action(GetAdminViewInfoSuccess)
   getUsersSuccess(ctx: StateContext<AdminViewStateModel>, { adminView }: GetAdminViewInfoSuccess) {
-   ctx.setState({
+   ctx.patchState({
     users: adminView
    });
   }

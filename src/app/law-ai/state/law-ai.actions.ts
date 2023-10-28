@@ -19,3 +19,12 @@ export class ClearMemory {
 export class LoadData {
   static readonly type = '[LAW-AI] Load data';
 }
+
+export class PatchQuery {
+  static readonly type = '[LAW-AI] Patch query';
+  constructor(public query: string) {}
+}
+
+export class SaveChatOnDispose {
+  static readonly type = '[LAW-AI] Save chat on dispose';
+}

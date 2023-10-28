@@ -3,9 +3,9 @@ import { BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import {TranslateService} from "@ngx-translate/core";
-import { TranslatePartialLoader } from 'angular-translate-loader-partial';
 import { Route, Router } from '@angular/router';
-import { LawAIService } from './law-ai/services/law-ai.service';
+import { Store } from '@ngxs/store';
+import { LoadData } from './law-ai/state/law-ai.actions';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +21,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private accountService: AccountService,
    private router: Router,
    translateService: TranslateService,
-   lawAIService: LawAIService) {
+   store: Store) {
     translateService.setDefaultLang('pl');
     translateService.use('pl');
-    lawAIService.loadData().pipe(take(1)).subscribe();
+    store.dispatch(new LoadData());
   }
 
   ngOnInit(): void {

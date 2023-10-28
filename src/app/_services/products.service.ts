@@ -23,8 +23,6 @@ export class ProductsService {
       'responseType'  : 'arraybuffer' as 'json'
     });
   }
-
-
   getProductImage2(id: number) {
     return this.http.get<any>(`${this.baseUrl}products/${id}/image2`);
   }

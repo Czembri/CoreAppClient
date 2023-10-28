@@ -5,3 +5,7 @@ export interface PostModel {
 export interface ResponseModel {
   response: string;
 }
+
+export interface MessageModel {
+  message: string;
+}
