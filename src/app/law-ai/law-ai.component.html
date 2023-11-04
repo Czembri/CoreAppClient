@@ -1,10 +1,10 @@
 <div class="general-container">
   <div class="response-container">
       <div class="response">
-        <ng-container *ngFor="let item of data$ | async as data; let i = index">
-          <div class="chat-item"  [ngClass]="{'question': i % 2 === 0 || i === 0, 'answer': i % 2 === 1 || i === 1}">
-            <ng-container [ngTemplateOutlet]="i % 2 === 0 || i === 0 ? queryTemplate : answerTemplate"
-              [ngTemplateOutletContext]="{item: item}">
+        <ng-container *ngFor="let item of data$ | async">
+          <div class="chat-item"  [ngClass]="{'question':item.role === 'user', 'answer': item.role === 'assistant'}">
+            <ng-container [ngTemplateOutlet]="item.role === 'user'? queryTemplate : answerTemplate"
+              [ngTemplateOutletContext]="{item: item.content}">
             </ng-container>
           </div>
         </ng-container>

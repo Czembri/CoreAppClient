@@ -1,22 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { BaseState } from "src/app/_models/base-state.model"
-import { LawAIService } from "../services/law-ai.service";
-import { ClearMemory, LoadData, PatchQuery, PostConstitutionAi,
+import { ClearMemory, LoadData, PostConstitutionAi,
   PostConstitutionAiFailed, PostConstitutionAiSuccess, SaveChatOnDispose } from "./law-ai.actions";
 import { catchError, finalize, map, tap, throwError } from "rxjs";
 import produce from "immer";
+import { MessageAi } from "../models/law-ai.model";
+import { LawAIService } from "../services/law-ai.service";
 
 export interface LawAIStateModel extends BaseState {
-  responsesAndQuestions: Array<string>,
+  messages: Array<MessageAi>,
 }
 
 @State<LawAIStateModel>({
   name: 'LawAI',
   defaults: {
-    // responsesAndQuestions: ['czy mogę zabijać?', 'nie nie możesz', 'dlaczego?', 'bo tak', 'ale dlaczego?',
-    //   'bo konstytucja tak mówi essa', 'a co to jest konstytucja?', 'to jest zbiór praw i obowiązków'],
-    responsesAndQuestions:[],
+    // messages: [ { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'} ],
+    messages:[],
     errors: [],
     message: '',
     isLoading: false,
@@ -27,8 +27,8 @@ export class LawAIState {
   constructor(private lawAIService: LawAIService) {}
 
   @Selector()
-  public static arrayOfData(state: LawAIStateModel): Array<string> {
-    return state.responsesAndQuestions;
+  public static messages(state: LawAIStateModel): Array<MessageAi> {
+    return state.messages.map(m => m);
   }
 
   @Selector()
@@ -39,9 +39,9 @@ export class LawAIState {
 
   @Action(SaveChatOnDispose)
   public saveChat(ctx: StateContext<LawAIStateModel>) {
-    if(ctx.getState().responsesAndQuestions.length === 0) return;
+    if(ctx.getState().messages.length === 0) return;
     ctx.patchState({isLoading: true});
-    return this.lawAIService.saveChat(ctx.getState().responsesAndQuestions.join(';;'))
+    return this.lawAIService.saveChat()
     .pipe(
       tap(res => ctx.patchState({message: res.response})),
       finalize(() => ctx.patchState({isLoading: false})),
@@ -49,19 +49,13 @@ export class LawAIState {
   }
 
 
-  @Action(PatchQuery)
-  public patchQuery(ctx: StateContext<LawAIStateModel>, {query} : PatchQuery ) {
-    ctx.patchState(produce(ctx.getState(), (draft: LawAIStateModel) => {
-      draft.isLoading = true;
-      draft.responsesAndQuestions = [...draft.responsesAndQuestions, query];
-     }));
-
-     ctx.dispatch(new PostConstitutionAi(query));
-  }
-
-
   @Action(PostConstitutionAi)
   public postConstitutionAI(ctx: StateContext<LawAIStateModel>, {query} : PostConstitutionAi ) {
+    const newMessage: MessageAi =  { content: query, role: 'user'}
+    ctx.patchState(produce(ctx.getState(), (draft: LawAIStateModel) => {
+      draft.isLoading = true;
+      draft.messages = [...draft.messages, newMessage];
+     }));
     return this.lawAIService.postQuery(query).pipe(
       map(response => response.response),
       tap(response => ctx.dispatch(new PostConstitutionAiSuccess(response))),
@@ -76,7 +70,7 @@ export class LawAIState {
   public postConstitutionAiSuccess(ctx: StateContext<LawAIStateModel>, { response }: PostConstitutionAiSuccess) {
     ctx.patchState(produce(ctx.getState(), (draft: LawAIStateModel) => {
       draft.isLoading = false;
-      draft.responsesAndQuestions = [...ctx.getState()?.responsesAndQuestions, response];
+      draft.messages = [...ctx.getState()?.messages, { content: response.content, role: 'assistant' } as MessageAi];
      }));
   }
 

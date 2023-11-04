@@ -4,8 +4,6 @@ import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import {TranslateService} from "@ngx-translate/core";
 import { Route, Router } from '@angular/router';
-import { Store } from '@ngxs/store';
-import { LoadData } from './law-ai/state/law-ai.actions';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +18,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private accountService: AccountService,
    private router: Router,
-   translateService: TranslateService,
-   store: Store) {
+   translateService: TranslateService) {
     translateService.setDefaultLang('pl');
     translateService.use('pl');
-    store.dispatch(new LoadData());
   }
 
   ngOnInit(): void {

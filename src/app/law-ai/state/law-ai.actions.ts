@@ -1,3 +1,5 @@
+import { MessageAi } from "../models/law-ai.model";
+
 export class PostConstitutionAi {
   static readonly type = '[LAW-AI] Post constitution AI';
   constructor(public query: string) {}
@@ -5,7 +7,7 @@ export class PostConstitutionAi {
 
 export class PostConstitutionAiSuccess {
   static readonly type = '[LAW-AI] Post constitution AI success';
-  constructor(public response: string) {}
+  constructor(public response: MessageAi) {}
 }
 
 export class PostConstitutionAiFailed {
@@ -18,11 +20,6 @@ export class ClearMemory {
 
 export class LoadData {
   static readonly type = '[LAW-AI] Load data';
-}
-
-export class PatchQuery {
-  static readonly type = '[LAW-AI] Patch query';
-  constructor(public query: string) {}
 }
 
 export class SaveChatOnDispose {
