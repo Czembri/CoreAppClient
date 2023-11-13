@@ -2,6 +2,11 @@
   "LAW_AI_VIEW" : {
     "TEXT_LABEL": "Zapytaj prawnika...",
     "RESPONSE_LABEL": "Odpowiedź: ",
-    "QUERY_LABEL": "Pytanie: "
+    "QUERY_LABEL": "Pytanie: ",
+    "DOCUMENT_TITLE": "Tytuł documentu: ",
+    "DOCUMENT_TEXT": "Zawartość dokumentu: ",
+    "DOCUMENT_TYPE": "Typ dokumentu: ",
+    "DOCUMENT_TYPE_APPEAL": "Apelacja",
+    "DOCUMENT_TYPE_JUSTIFICATION": "Uzasadnienie"
   }
 }

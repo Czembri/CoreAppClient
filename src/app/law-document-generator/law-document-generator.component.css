@@ -1,0 +1,18 @@
+.general-container {
+  height: 98.6%;
+  background-color: rgb(54, 54, 54);
+  border: 10px solid #20c997;
+}
+
+.form-field__style {
+  width: 50em;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  margin: 5em;
+}

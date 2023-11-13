@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { BaseState } from "src/app/_models/base-state.model"
-import { ClearMemory, LoadData, PostConstitutionAi,
+import { ClearMemory, ClearState, LoadData, PostConstitutionAi,
   PostConstitutionAiFailed, PostConstitutionAiSuccess, SaveChatOnDispose } from "./law-ai.actions";
 import { catchError, finalize, map, tap, throwError } from "rxjs";
 import produce from "immer";
@@ -15,8 +15,8 @@ export interface LawAIStateModel extends BaseState {
 @State<LawAIStateModel>({
   name: 'LawAI',
   defaults: {
-    // messages: [ { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'} ],
-    messages:[],
+    messages: [ { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'} ],
+    // messages:[],
     errors: [],
     message: '',
     isLoading: false,
@@ -41,9 +41,11 @@ export class LawAIState {
   public saveChat(ctx: StateContext<LawAIStateModel>) {
     if(ctx.getState().messages.length === 0) return;
     ctx.patchState({isLoading: true});
+    ctx.dispatch(new ClearState())
     return this.lawAIService.saveChat()
     .pipe(
       tap(res => ctx.patchState({message: res.response})),
+      tap(_ => ctx.dispatch(new ClearMemory())),
       finalize(() => ctx.patchState({isLoading: false})),
     );
   }
@@ -78,9 +80,8 @@ export class LawAIState {
   public clearMemory(ctx: StateContext<LawAIStateModel>) {
     ctx.patchState({isLoading: true});
     return this.lawAIService.clearMemory().pipe(
-      tap(_ => ctx.dispatch(new SaveChatOnDispose())),
-      tap(res => ctx.patchState({
-        errors: [res.response],
+      tap(() => ctx.patchState({
+        message: undefined,
         isLoading: false,
       })),
     );
@@ -96,5 +97,15 @@ export class LawAIState {
         });
       }),
     );
+  }
+
+  @Action(ClearState)
+  public clearState(ctx: StateContext<LawAIStateModel>) {
+    return ctx.patchState({
+      messages: [],
+      errors: [],
+      message: '',
+      isLoading: false,
+    })
   }
 }

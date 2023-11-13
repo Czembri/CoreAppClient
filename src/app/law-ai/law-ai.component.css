@@ -13,6 +13,11 @@
   max-height: 10rem;
 }
 
+.form-field__style {
+  width: 50em;
+  color: white;
+}
+
 .law-form {
   margin: 2em;
   max-height: 8em;

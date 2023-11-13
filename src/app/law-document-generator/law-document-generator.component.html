@@ -1,0 +1,29 @@
+<div class="general-container">
+  <form [formGroup]="formGroup" ngxsForm="lawDocumentGenerator">
+    <mat-form-field class="form-field__style" appearance="fill">
+      <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_TITLE" | translate }}</mat-label>
+      <input matInput type="text" formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="form-field__style" appearance="fill">
+      <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_TYPE" | translate }}</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let option of options" [value]="option.type">
+          {{ option.translation | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-field__style" appearance="fill">
+      <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_TEXT" | translate }}</mat-label>
+      <textarea matInput
+        [disabled]="isLoading$ | async"
+        formControlName="content"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="2"
+        cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+    <button mat-fab extended (click)="submit()">
+      <mat-icon><i class="fa-solid fa-check"></i></mat-icon>
+    </button>
+  </form>
+</div>

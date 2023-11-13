@@ -25,3 +25,7 @@ export class LoadData {
 export class SaveChatOnDispose {
   static readonly type = '[LAW-AI] Save chat on dispose';
 }
+
+export class ClearState {
+  static readonly type = '[LAW-AI] Clear state';
+}

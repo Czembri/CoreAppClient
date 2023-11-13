@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { AIMessageResponseModel, MessageModel, PostModel, ResponseModel } from "../models/law-ai.model";
+import { AIMessageResponseModel } from "../models/law-ai.model";
+import { MessageModel, PostModel, ResponseModel } from "src/app/shared/models/service.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,6 @@ export class LawAIService {
   }
 
   saveChat(): Observable<ResponseModel> {
-    return this.http.post<ResponseModel>(`${this.baseUrl}/save-chat`, {});
+    return this.http.post<ResponseModel>(`${this.baseUrl}save-chat`, {});
   }
 }

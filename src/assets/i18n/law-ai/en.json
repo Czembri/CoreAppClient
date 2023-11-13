@@ -2,6 +2,11 @@
   "LAW_AI_VIEW" : {
     "TEXT_LABEL": "Ask a Lawyer...",
     "RESPONSE_LABEL": "Answer: ",
-    "QUERY_LABEL": "Question: "
+    "QUERY_LABEL": "Question: ",
+    "DOCUMENT_TITLE": "Document title: ",
+    "DOCUMENT_TEXT": "Document text: ",
+    "DOCUMENT_TYPE": "Document type: ",
+    "DOCUMENT_TYPE_APPEAL": "Appeal",
+    "DOCUMENT_TYPE_JUSTIFICATION": "Justification"
   }
 }

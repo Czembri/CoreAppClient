@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/
 import { FormControl, FormGroup } from "@angular/forms";
 import { Store } from "@ngxs/store";
 import { LawAIState } from "./state/law-ai.state";
-import { ClearMemory, LoadData, PostConstitutionAi } from "./state/law-ai.actions";
+import { ClearState, LoadData, PostConstitutionAi, SaveChatOnDispose } from "./state/law-ai.actions";
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-law-ai',
   templateUrl: './law-ai.component.html',
   styleUrls: ['./law-ai.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,6 +16,7 @@ export class LawAIComponent implements OnDestroy, OnInit {
   public data$ = this.store.select(LawAIState.messages);
 
   constructor(private store: Store) {
+    this.store.dispatch(new ClearState()); // needs to be replaced to abstract class
     this.lawForm = new FormGroup({
       query: new FormControl(''),
     });
@@ -26,7 +27,7 @@ export class LawAIComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
-    this.store.dispatch(new ClearMemory());
+    this.store.dispatch(new SaveChatOnDispose());
   }
 
   submitQuery(): void {

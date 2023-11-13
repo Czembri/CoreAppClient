@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { MessageModel, PostModel, ResponseModel } from "../models/law-ai.model";
+import { ResponseModel, PostModel, MessageModel } from "src/app/shared/models/service.model";
 
 @Injectable({
   providedIn: 'root'

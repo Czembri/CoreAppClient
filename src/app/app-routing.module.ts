@@ -35,6 +35,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'law-document-generator',
+    loadChildren: () => import('./law-document-generator/law-document.module').then(m => m.LawDocumentModule),
+    canActivate: [AuthGuardService]
+  },
+  {
     path: '', component: HomeComponent
   },
   {

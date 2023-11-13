@@ -13,7 +13,7 @@
   </div>
   <div class="law-container">
     <form [formGroup]="lawForm" class="law-form">
-      <mat-form-field style="width: 50em;color: white;" appearance="fill">
+      <mat-form-field  class="form-field__style" appearance="fill">
         <mat-label>{{ 'LAW_AI_VIEW.TEXT_LABEL' | translate }}</mat-label>
         <textarea matInput
               [disabled]="isLoading$ | async"
