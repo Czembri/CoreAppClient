@@ -1,11 +1,12 @@
 .general-container {
   height: 98.6%;
-  background-color: rgb(54, 54, 54);
-  border: 10px solid #20c997;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 .law-container {
-  /* height: 98.6%; */
   width: 100%;
   display: flex;
   align-items: end;

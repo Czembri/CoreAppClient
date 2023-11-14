@@ -4,6 +4,7 @@ import { Store } from "@ngxs/store";
 import { DocumentType } from "./models/law-document.model";
 import { LawDocumentTypeEnum } from "./enums/law-document.enum";
 import { LawDocumentGeneratorState } from "./state/law-document-generator.state";
+import { PostDocumentInfo } from "./state/law-document-generator.actions";
 
 @Component({
   selector: 'app-lwa-documents-generator',
@@ -33,5 +34,7 @@ export class LawDocumentGeneratorComponent implements OnDestroy, OnInit {
 
   ngOnDestroy(): void { }
 
-  submit(): void { }
+  submit(): void {
+    this.store.dispatch(new PostDocumentInfo());
+   }
 }

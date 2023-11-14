@@ -49,7 +49,7 @@ export class LawDocumentGeneratorState {
   public postDocumentInfoSuccess(ctx: StateContext<LawDocumentGeneratorStateModel>, { response }: PostDocumentInfoSuccess) {
     ctx.patchState(produce(ctx.getState(), (draft: LawDocumentGeneratorStateModel) => {
       draft.isLoading = false;
-      draft.message = response;
+      draft.message = response; // TODO: remove this line, it's only for testing
      }));
   }
 }

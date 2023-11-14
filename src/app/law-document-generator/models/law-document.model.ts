@@ -1,12 +1,14 @@
+import { Moment } from "moment";
 import { LawDocumentTypeEnum } from "../enums/law-document.enum";
 
 export interface DocumentPostInfo {
-  name: string;
-  description: string;
-  date: string;
+  title: string;
+  content: string;
+  date?: Moment;
   scale?: number;
-  footer: string;
-  documentType: string;
+  footer?: string;
+  header?: string;
+  type: string;
 }
 
 export interface DocumentType {

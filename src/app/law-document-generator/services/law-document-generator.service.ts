@@ -8,7 +8,7 @@ import { ResponseModel } from "src/app/shared/models/service.model";
   providedIn: 'root'
 })
 export class LawDocumentGeneratorService {
-  baseAiApiUrl = 'http://localhost:8001/api/v1/law-ai';
+  baseAiApiUrl = 'http://localhost:5001/api/documentgenerator';
   constructor(private http: HttpClient) { }
 
 
