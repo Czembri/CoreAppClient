@@ -46,6 +46,7 @@
     "moment": "^2.29.4",
     "ng-webdatarocks": "^1.4.7",
     "ngx-bootstrap": "^9.0.0",
+    "ngx-extended-pdf-viewer": "^18.1.6",
     "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^14.2.0",
     "ngx-translate-multi-http-loader": "^16.0.0",

@@ -1,6 +1,36 @@
 <div class="general-container">
   <form [formGroup]="formGroup" ngxsForm="lawDocumentGenerator">
     <mat-form-field class="form-field__style" appearance="fill">
+      <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_DATE" | translate }}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="form-field__style" appearance="fill">
+      <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_CITY" | translate }}</mat-label>
+      <input matInput type="text" formControlName="city">
+    </mat-form-field>
+    <div class="one-row">
+      <mat-form-field class="form-field-half__style" appearance="fill">
+        <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_SENDER" | translate }}</mat-label>
+        <input matInput type="text" formControlName="sender">
+      </mat-form-field>
+      <mat-form-field class="form-field-half__style" appearance="fill">
+        <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_SENDER_ADDRESS" | translate }}</mat-label>
+        <input matInput type="text" formControlName="senderAddress">
+      </mat-form-field>
+    </div>
+    <div class="one-row">
+      <mat-form-field class="form-field-half__style" appearance="fill">
+        <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_RECIPIENT" | translate }}</mat-label>
+        <input matInput type="text" formControlName="recipient">
+      </mat-form-field>
+      <mat-form-field class="form-field-half__style" appearance="fill">
+        <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_RECIPIENT_ADDRESS" | translate }}</mat-label>
+        <input matInput type="text" formControlName="recipientAddress">
+      </mat-form-field>
+    </div>
+    <mat-form-field class="form-field__style" appearance="fill">
       <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_TITLE" | translate }}</mat-label>
       <input matInput type="text" formControlName="title">
     </mat-form-field>
@@ -15,7 +45,6 @@
     <mat-form-field class="form-field__style" appearance="fill">
       <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_TEXT" | translate }}</mat-label>
       <textarea matInput
-        [disabled]="isLoading$ | async"
         formControlName="content"
         cdkTextareaAutosize
         #autosize="cdkTextareaAutosize"
@@ -25,5 +54,20 @@
     <button mat-fab extended (click)="submit()">
       <mat-icon><i class="fa-solid fa-check"></i></mat-icon>
     </button>
+    <mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>
   </form>
 </div>
+
+
+<!-- TODO: add this to the component -->
+<ng-container *ngIf="fileUrl$ | async as url">
+  <div class="document-container">
+    <ngx-extended-pdf-viewer
+        [src]="url"
+        [height]="'auto'"
+        [useBrowserLocale]="true"
+      >
+    </ngx-extended-pdf-viewer>
+  </div>
+</ng-container>
+

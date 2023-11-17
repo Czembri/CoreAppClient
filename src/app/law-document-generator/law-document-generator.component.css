@@ -7,8 +7,24 @@
 }
 
 .form-field__style {
-  width: 50em;
+  width: 50%;
   color: white;
+}
+
+.one-row {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-field-half__style {
+  width: 48%;
+  margin-right: 2%;
+  color: white;
+}
+
+.form-field-half__style:last-child {
+  margin-right: 0;
 }
 
 form {
@@ -17,4 +33,8 @@ form {
   align-content: center;
   align-items: center;
   margin: 5em;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+  display: flex;
 }

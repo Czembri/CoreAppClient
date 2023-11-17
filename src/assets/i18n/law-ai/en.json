@@ -4,9 +4,15 @@
     "RESPONSE_LABEL": "Answer: ",
     "QUERY_LABEL": "Question: ",
     "DOCUMENT_TITLE": "Document title: ",
+    "DOCUMENT_CITY": "Place of preparation of the document: ",
+    "DOCUMENT_DATE": "Document date: ",
     "DOCUMENT_TEXT": "Document text: ",
     "DOCUMENT_TYPE": "Document type: ",
     "DOCUMENT_TYPE_APPEAL": "Appeal",
-    "DOCUMENT_TYPE_JUSTIFICATION": "Justification"
+    "DOCUMENT_TYPE_JUSTIFICATION": "Justification",
+    "DOCUMENT_SENDER": "Sender: ",
+    "DOCUMENT_RECIPIENT": "Recipient: ",
+    "DOCUMENT_SENDER_ADDRESS": "Sender address: ",
+    "DOCUMENT_RECIPIENT_ADDRESS": "Recipient address: "
   }
 }
