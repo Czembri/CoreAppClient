@@ -12,8 +12,10 @@ export interface DocumentPostInfo {
   type: string;
   sender?: string;
   senderAddress?: string;
+  senderPhone?: string;
   recipient?: string;
   recipientAddress?: string;
+  recipientPhone?: string;
 }
 
 export interface DocumentType {

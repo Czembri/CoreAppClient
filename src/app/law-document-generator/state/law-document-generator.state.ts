@@ -1,14 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { State } from "@ngxs/store";
 import { BaseState } from "src/app/_models/base-state.model"
-import { PostDocumentInfo, PostDocumentInfoFailed, PostDocumentInfoSuccess } from "./law-document-generator.actions";
-import { catchError, map, tap, throwError } from "rxjs";
-import produce from "immer";
 import { DocumentPostInfo, DocumentResponse } from "../models/law-document.model";
 import { LawDocumentGeneratorService } from "../services/law-document-generator.service";
 import { LawDocumentTypeEnum } from "../enums/law-document.enum";
 import * as jsonMock from '../../../assets/json/mocks/document-generator.mock.json';
-import * as moment from "moment";
 
 export interface LawDocumentGeneratorStateModel extends BaseState {
   model: DocumentPostInfo,
@@ -28,6 +24,8 @@ export interface LawDocumentGeneratorStateModel extends BaseState {
       recipient: 'Sąd Okręgowy w Warszawie',
       recipientAddress: 'ul. Marszałkowska 82, 00-001 Warszawa',
       date: undefined,
+      senderPhone: '123456789',
+      recipientPhone: '987654321',
     },
     documentHtmlString: jsonMock,
     errors: [],

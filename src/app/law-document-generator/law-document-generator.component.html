@@ -30,6 +30,18 @@
         <input matInput type="text" formControlName="recipientAddress">
       </mat-form-field>
     </div>
+    <div class="one-row">
+      <mat-form-field class="form-field-half__style" appearance="fill">
+        <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_SENDER_PHONE" | translate }}</mat-label>
+        <mat-icon matSuffix>phone</mat-icon>
+        <input matInput type="text" formControlName="senderPhone">
+      </mat-form-field>
+      <mat-form-field class="form-field-half__style" appearance="fill">
+        <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_RECIPIENT_PHONE" | translate }}</mat-label>
+        <mat-icon matSuffix>phone</mat-icon>
+        <input matInput type="text" formControlName="recipientPhone">
+      </mat-form-field>
+    </div>
     <mat-form-field class="form-field__style" appearance="fill">
       <mat-label>{{ "LAW_AI_VIEW.DOCUMENT_TITLE" | translate }}</mat-label>
       <input matInput type="text" formControlName="title">
@@ -51,10 +63,17 @@
         cdkAutosizeMinRows="2"
         cdkAutosizeMaxRows="5"></textarea>
     </mat-form-field>
-    <button mat-fab extended (click)="submit()">
-      <mat-icon><i class="fa-solid fa-check"></i></mat-icon>
-    </button>
-    <mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>
+    <div class="one-row">
+      <button mat-button color="accent" (click)="submit('pdf')">
+        <mat-icon>check</mat-icon>
+        {{ "LAW_AI_VIEW.DOWNLOAD_PDF" | translate }}
+      </button>
+      <button mat-button color="accent" (click)="submit('docx')">
+        <mat-icon>check</mat-icon>
+        {{ "LAW_AI_VIEW.DOWNLOAD_DOCX" | translate }}
+      </button>
+    </div>
+    <mat-spinner *ngIf="isLoading$ | async" class="center__spinner-local" color="accent" diameter="40"></mat-spinner>
   </form>
 </div>
 

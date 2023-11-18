@@ -16,7 +16,6 @@ export class LawAIComponent implements OnDestroy, OnInit {
   public data$ = this.store.select(LawAIState.messages);
 
   constructor(private store: Store) {
-    // this.store.dispatch(new ClearState()); // needs to be replaced to abstract class
     this.lawForm = new FormGroup({
       query: new FormControl(''),
     });

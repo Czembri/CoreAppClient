@@ -11,7 +11,7 @@ export class LawDocumentGeneratorService {
   constructor(private http: HttpClient) { }
 
 
-  postDocucument(documentInfo: DocumentPostInfo): Observable<Blob> {
-    return this.http.post<Blob>(`${this.baseAiApiUrl}`, documentInfo, {responseType:'blob' as 'json'});
+  postDocucument(type: string, documentInfo: DocumentPostInfo): Observable<Blob> {
+    return this.http.post<Blob>(`${this.baseAiApiUrl}/${type}`, documentInfo, {responseType:'blob' as 'json'});
   }
 }

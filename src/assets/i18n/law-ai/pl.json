@@ -13,6 +13,14 @@
     "DOCUMENT_SENDER": "Nadawca: ",
     "DOCUMENT_RECIPIENT": "Odbiorca: ",
     "DOCUMENT_SENDER_ADDRESS": "Adres nadawcy: ",
-    "DOCUMENT_RECIPIENT_ADDRESS": "Adres odbiorcy: "
+    "DOCUMENT_RECIPIENT_ADDRESS": "Adres odbiorcy: ",
+    "DOWNLOAD_DOCX": "Pobierz .docx",
+    "DOWNLOAD_PDF": "Pobierz .pdf",
+    "DOWNLOAD_TXT": "Pobierz .txt",
+    "DOWNLOAD_HTML": "Pobierz .html",
+    "DOWNLOAD_JSON": "Pobierz .json",
+    "DOWNLOAD_XML": "Pobierz .xml",
+    "DOCUMENT_SENDER_PHONE": "Telefon nadawcy: ",
+    "DOCUMENT_RECIPIENT_PHONE": "Telefon odbiorcy: "
   }
 }

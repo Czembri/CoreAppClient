@@ -12,18 +12,16 @@ import { MaterialsModule } from './materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './_services/auth-guard.service';
 import { AuthService } from './_services/auth.service';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS, JwtInterceptor } from '@auth0/angular-jwt';
 import { BrowserService } from './_services/browser.service';
 import {NgxsModule} from '@ngxs/store';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import { environment } from 'src/environments/environment';
 import { WebdatarocksPivotModule } from 'ng-webdatarocks';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ContractorsModule } from './contractors/contractors.module';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
-import { NgxsRootModule } from '@ngxs/store/src/modules/ngxs-root.module';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { NavComponent } from './nav/nav.component';
 import { AccountService } from './_services/account.service';
@@ -33,6 +31,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { PasswordReminderComponent } from './home/password-reminder/password-reminder.component';
 import { ActionsFooterButtonsModule } from './actions-footer-buttons/actions-footer-buttons.module';
 import { ProductsModule } from './products/product.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -70,7 +69,8 @@ import { ProductsModule } from './products/product.module';
             deps: [HttpBackend]
         }
     }),
-    ProductsModule
+    ProductsModule,
+    ToastrModule.forRoot(),
   ],
   entryComponents: [
     AppComponent,
@@ -92,9 +92,9 @@ import { ProductsModule } from './products/product.module';
       useClass: TokenInterceptorService,
       multi: true,
     },
-    // {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-  // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    // {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
   ],
 })
 export class AppModule { }

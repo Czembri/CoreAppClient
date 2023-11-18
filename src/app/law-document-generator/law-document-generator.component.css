@@ -38,3 +38,13 @@ form {
 :host ::ng-deep .mat-form-field-infix {
   display: flex;
 }
+
+.center__spinner-local {
+  position: absolute;
+  z-index: 9999;
+  top: -50%;
+  left: 0;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
