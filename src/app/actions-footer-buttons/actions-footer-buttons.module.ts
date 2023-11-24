@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatButtonModule } from "@angular/material/button";
+import { MatLegacyDialogModule as MatDialogModule } from "@angular/material/legacy-dialog";
+import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
 import { ActionsFooterButtonsComponent } from "./actions-footer-buttons.component";
 
 @NgModule({

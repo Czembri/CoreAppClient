@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestro
 import { Subject, takeUntil, BehaviorSubject, forkJoin } from 'rxjs';
 import { ProductsService } from 'src/app/_services/products.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ICommandsDataTypeModel } from 'src/app/shared/models/commands-data-type.model';

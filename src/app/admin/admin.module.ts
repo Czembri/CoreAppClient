@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatTableModule } from "@angular/material/table";
+import { MatLegacyTableModule as MatTableModule } from "@angular/material/legacy-table";
 import { NgxsModule } from "@ngxs/store";
 import { MaterialsModule } from "../materials.module";
 import { SlickgridBaseModule } from "../slickgrid-base/slickgrid-base.module";
