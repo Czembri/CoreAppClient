@@ -6,3 +6,8 @@ export interface MessageAi {
 export interface AIMessageResponseModel {
   response: MessageAi;
 }
+
+export interface MessagesResponseModel {
+  response: MessageAi[];
+  id: number;
+}

@@ -1,25 +1,27 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { BaseState } from "src/app/_models/base-state.model"
-import { ClearMemory, ClearState, LoadData, PostConstitutionAi,
+import { ClearMemory, ClearState, GetChat, GetChats, LoadData, PostConstitutionAi,
   PostConstitutionAiFailed, PostConstitutionAiSuccess, SaveChatOnDispose } from "./law-ai.actions";
 import { catchError, finalize, map, tap, throwError } from "rxjs";
 import produce from "immer";
-import { MessageAi } from "../models/law-ai.model";
+import { MessageAi, MessagesResponseModel } from "../models/law-ai.model";
 import { LawAIService } from "../services/law-ai.service";
 
 export interface LawAIStateModel extends BaseState {
-  messages: Array<MessageAi>,
+  messages: MessageAi[],
+  chats: MessagesResponseModel[],
 }
 
 @State<LawAIStateModel>({
   name: 'LawAI',
   defaults: {
-    messages: [ { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'},
-    { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'},
-    { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'},
-    { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'}, ],
-    // messages:[],
+    // messages: [ { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'},
+    // { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'},
+    // { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'},
+    // { role: 'user', content: 'hej pomóż mi z prawem'}, { role: 'assistant', content: 'Jasne bracie jak mogę Ci pomóc?'}, ],
+    chats: [],
+    messages:[],
     errors: [],
     message: '',
     isLoading: false,
@@ -30,8 +32,13 @@ export class LawAIState {
   constructor(private lawAIService: LawAIService) {}
 
   @Selector()
-  public static messages(state: LawAIStateModel): Array<MessageAi> {
+  public static messages(state: LawAIStateModel): MessageAi[] {
     return state.messages.map(m => m);
+  }
+
+  @Selector()
+  public static chats(state: LawAIStateModel): MessagesResponseModel[] {
+    return state.chats;
   }
 
   @Selector()
@@ -79,6 +86,33 @@ export class LawAIState {
      }));
   }
 
+  @Action(GetChats)
+  public getChats(ctx: StateContext<LawAIStateModel>) {
+    ctx.patchState({isLoading: true});
+    return this.lawAIService.getChats().pipe(
+      tap(res => {
+        ctx.patchState({
+          chats: res,
+        });
+        ctx.patchState({isLoading: false})
+      }),
+    );
+  }
+
+  @Action(GetChat)
+  public getChat(ctx: StateContext<LawAIStateModel>, {chatId}: GetChat) {
+    ctx.patchState({isLoading: true});
+    return this.lawAIService.getChat(chatId).pipe(
+      tap(res => {
+        ctx.patchState({
+          messages: res.response.slice(1),
+        });
+        ctx.patchState({isLoading: false})
+      }),
+      tap(() => ctx.dispatch(new LoadData()))
+    );
+  }
+
   @Action(ClearMemory)
   public clearMemory(ctx: StateContext<LawAIStateModel>) {
     ctx.patchState({isLoading: true});
@@ -92,7 +126,8 @@ export class LawAIState {
 
   @Action(LoadData)
   public loadData(ctx: StateContext<LawAIStateModel>) {
-    return this.lawAIService.loadData().pipe(
+    const state = ctx.getState();
+    return this.lawAIService.loadData(state.messages).pipe(
       tap(res => {
         ctx.setState({
           ...ctx.getState(),

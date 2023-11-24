@@ -26,7 +26,7 @@ import { ConstitutionAIState } from './state/constitution-ai.state';
     HeaderModule,
     LawAIRoutingModule,
     SharedModule,
-    NgxsModule.forFeature([LawAIState, ConstitutionAIState]),
+    NgxsModule.forFeature([ConstitutionAIState]),
   ],
 })
 export class LawAIModule { }

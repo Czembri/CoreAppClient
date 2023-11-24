@@ -5,6 +5,11 @@ import { LawAIComponent } from './law-ai.component';
 
 const routes: Routes = [
   {
+    path: ':id',
+    component: LawAIComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
     path: '',
     component: LawAIComponent,
     canActivate: [AuthGuardService]

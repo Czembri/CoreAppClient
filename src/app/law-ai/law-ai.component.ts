@@ -2,7 +2,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/
 import { FormControl, FormGroup } from "@angular/forms";
 import { Store } from "@ngxs/store";
 import { LawAIState } from "./state/law-ai.state";
-import { ClearState, LoadData, PostConstitutionAi, SaveChatOnDispose } from "./state/law-ai.actions";
+import { GetChat, LoadData, PostConstitutionAi, SaveChatOnDispose } from "./state/law-ai.actions";
+import { ActivatedRoute } from "@angular/router";
+import { Subject, switchMap, takeUntil, tap } from "rxjs";
 
 @Component({
   selector: 'app-law-ai',
@@ -15,18 +17,30 @@ export class LawAIComponent implements OnDestroy, OnInit {
   public isLoading$ = this.store.select(LawAIState.isLoading);
   public data$ = this.store.select(LawAIState.messages);
 
-  constructor(private store: Store) {
+  private destroyed$ = new Subject<void>();
+
+  constructor(private store: Store, private route: ActivatedRoute) {
     this.lawForm = new FormGroup({
       query: new FormControl(''),
     });
   }
 
   ngOnInit(): void {
-    this.store.dispatch(new LoadData());
+    this.route.params.pipe(
+      takeUntil(this.destroyed$),
+      tap(params => {
+        if (!!params['id']) {
+          return this.store.dispatch(new GetChat(params['id']));
+        }
+        return this.store.dispatch(new LoadData());
+      }),
+    ).subscribe();
   }
 
   ngOnDestroy(): void {
     this.store.dispatch(new SaveChatOnDispose());
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   submitQuery(): void {

@@ -32,6 +32,8 @@ import { PasswordReminderComponent } from './home/password-reminder/password-rem
 import { ActionsFooterButtonsModule } from './actions-footer-buttons/actions-footer-buttons.module';
 import { ProductsModule } from './products/product.module';
 import { ToastrModule } from 'ngx-toastr';
+import { LawAIState } from './law-ai/state/law-ai.state';
+import { ConstitutionAIState } from './law-ai/state/constitution-ai.state';
 
 
 @NgModule({
@@ -71,6 +73,7 @@ import { ToastrModule } from 'ngx-toastr';
     }),
     ProductsModule,
     ToastrModule.forRoot(),
+    NgxsModule.forFeature([LawAIState]), // for general usage
   ],
   entryComponents: [
     AppComponent,

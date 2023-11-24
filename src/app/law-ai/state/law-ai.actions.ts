@@ -29,3 +29,12 @@ export class SaveChatOnDispose {
 export class ClearState {
   static readonly type = '[LAW-AI] Clear state';
 }
+
+export class GetChats {
+  static readonly type = '[LAW-AI] Get chats';
+}
+
+export class GetChat {
+  static readonly type = '[LAW-AI] Get chat';
+  constructor(public chatId: number) {}
+}
