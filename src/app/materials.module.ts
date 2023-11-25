@@ -19,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({
     exports: [
@@ -42,7 +44,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatTreeModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatProgressSpinnerModule
     ],
     imports: [
         MatBadgeModule,
@@ -65,7 +68,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatTreeModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatProgressSpinnerModule
     ],
 })
 export class MaterialsModule { }

@@ -104,8 +104,14 @@ export class LawAIState {
     ctx.patchState({isLoading: true});
     return this.lawAIService.getChat(chatId).pipe(
       tap(res => {
+
+        if (res.response &&
+          res.response.length > 0 &&
+          res.response[0].role === 'system') {
+          res.response = res.response.slice(1);
+        }
         ctx.patchState({
-          messages: res.response.slice(1),
+          messages: res.response,
         });
         ctx.patchState({isLoading: false})
       }),

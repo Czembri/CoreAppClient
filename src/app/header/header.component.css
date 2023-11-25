@@ -1,3 +1,4 @@
-.dialog-close__btn {
-  float: right;
+h4 {
+  display: flex;
+  justify-content: space-between;
 }

@@ -8,6 +8,7 @@ import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
 import { AddAdminCommand } from './commands/add-admin.command';
 import { CommandType } from '../shared/enums/command-type.enum';
 import { DeleteAdminCommand } from './commands/delete-admin.command';
+import { EditAdminCommand } from './commands/edit-admin.command';
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
@@ -25,7 +26,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     private store: Store,
     private actions: Actions,
     private addAdminCommand: AddAdminCommand,
-    private deleteAdminCommand: DeleteAdminCommand) {}
+    private deleteAdminCommand: DeleteAdminCommand,
+    private editAdminCommand: EditAdminCommand) {}
 
   ngOnInit(): void {
     this.subNavigationOptions.push({
@@ -41,7 +43,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       text: 'EDIT',
       customLinkCssClasses: 'btn btn-primary me-2',
       action: () => {
-        console.warn('EDIT')
+        this.editAdminCommand.execute();
       }
     },
     {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ILogin } from '../nav/login.model';
 import { AccountService } from '../_services/account.service';
-import { BehaviorSubject, combineLatestWith, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatestWith, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { GetChats } from '../law-ai/state/law-ai.actions';
@@ -24,15 +24,17 @@ export class HomeComponent implements OnInit {
   );
 
   chats$ = this.store.select(LawAIState.chats);
-
+  user$ = this.accountService.currentUser$.pipe(tap(user => {
+    if (user) {
+      this.store.dispatch(new GetChats());
+    }
+  }));
 
   constructor(
     public accountService: AccountService,
     private router: Router, public store: Store) {}
 
-  ngOnInit(): void {
-    this.store.dispatch(new GetChats());
-  }
+  ngOnInit(): void {}
 
   registerToggle() {
     this.registerMode = !this.registerMode;
