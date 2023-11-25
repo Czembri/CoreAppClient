@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatLegacyTableModule as MatTableModule } from "@angular/material/legacy-table";
 import { NgxsModule } from "@ngxs/store";
 import { MaterialsModule } from "../materials.module";
 import { SlickgridBaseModule } from "../slickgrid-base/slickgrid-base.module";
@@ -13,6 +12,9 @@ import { HeaderModule } from "../header/header.module";
 import { ActionsFooterButtonsModule } from "../actions-footer-buttons/actions-footer-buttons.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 @NgModule({

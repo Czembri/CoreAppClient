@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { HttpErrorDialogComponent, ErrorMessageData } from '../errors/http-error-dialog/http-error-dialog.component';
 import { ComponentType } from "ngx-toastr";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 @Injectable({
     providedIn: 'root'

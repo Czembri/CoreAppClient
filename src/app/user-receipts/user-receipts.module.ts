@@ -11,9 +11,6 @@ import { UserReceipsRoutingModule } from "./user-receipts-routing.module";
   declarations: [
       UserReceiptsComponent
   ],
-  entryComponents: [
-    UserReceiptsComponent
-  ],
   imports: [
     UserReceipsRoutingModule,
     FormsModule,

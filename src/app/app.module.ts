@@ -33,7 +33,6 @@ import { ActionsFooterButtonsModule } from './actions-footer-buttons/actions-foo
 import { ProductsModule } from './products/product.module';
 import { ToastrModule } from 'ngx-toastr';
 import { LawAIState } from './law-ai/state/law-ai.state';
-import { ConstitutionAIState } from './law-ai/state/constitution-ai.state';
 
 
 @NgModule({
@@ -57,7 +56,6 @@ import { ConstitutionAIState } from './law-ai/state/constitution-ai.state';
     ReactiveFormsModule,
     FormsModule,
     ActionsFooterButtonsModule,
-    WebdatarocksPivotModule,
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
     }),
@@ -74,11 +72,6 @@ import { ConstitutionAIState } from './law-ai/state/constitution-ai.state';
     ProductsModule,
     ToastrModule.forRoot(),
     NgxsModule.forFeature([LawAIState]), // for general usage
-  ],
-  entryComponents: [
-    AppComponent,
-    NavComponent,
-    HomeComponent
   ],
   bootstrap: [AppComponent],
   providers: [

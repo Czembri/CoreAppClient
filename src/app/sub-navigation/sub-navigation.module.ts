@@ -12,9 +12,6 @@ import { CommonModule } from "@angular/common";
     TranslateModule,
     CommonModule,
   ],
-  entryComponents: [
-    SubNavigationComponent,
-  ],
   exports: [
     SubNavigationComponent
   ]

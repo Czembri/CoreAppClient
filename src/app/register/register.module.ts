@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
-import { MatLegacyTableModule as MatTableModule } from "@angular/material/legacy-table";
 import { RegisterComponent } from "./register.component";
+import { MatTableModule } from "@angular/material/table";
 
 
 @NgModule({
@@ -14,9 +14,6 @@ import { RegisterComponent } from "./register.component";
     ReactiveFormsModule,
     MatIconModule,
     MatTableModule,
-  ],
-  entryComponents: [
-    RegisterComponent,
   ], exports: [
     RegisterComponent
   ]

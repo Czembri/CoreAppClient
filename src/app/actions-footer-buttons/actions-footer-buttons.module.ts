@@ -1,8 +1,9 @@
 import { NgModule } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
-import { MatLegacyDialogModule as MatDialogModule } from "@angular/material/legacy-dialog";
-import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
 import { ActionsFooterButtonsComponent } from "./actions-footer-buttons.component";
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
     declarations: [
@@ -11,13 +12,10 @@ import { ActionsFooterButtonsComponent } from "./actions-footer-buttons.componen
     exports: [
       ActionsFooterButtonsComponent
     ],
-    entryComponents: [
-      ActionsFooterButtonsComponent
-    ],
     imports: [
       TranslateModule,
       MatDialogModule,
-      MatButtonModule,
+      MatButtonModule
     ],
 })
 export class ActionsFooterButtonsModule { }
