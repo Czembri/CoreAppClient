@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'actions-footer-buttons',
@@ -9,4 +9,15 @@ export class ActionsFooterButtonsComponent {
 
   @Input() public leftButtonName: string;
   @Input() public rightButtonName: string;
+
+  @Output() public leftButtonClicked = new EventEmitter();
+  @Output() public rightButtonClicked = new EventEmitter();
+
+  public onLeftButtonClick(): void {
+    this.leftButtonClicked.emit();
+  }
+
+  public onRightButtonClick(): void {
+    this.rightButtonClicked.emit();
+  }
 }

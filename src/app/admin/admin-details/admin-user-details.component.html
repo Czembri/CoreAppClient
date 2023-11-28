@@ -1,6 +1,6 @@
 <header [title]="dialogData.titleKey"></header>
 <div class="component-container">
-  <form [formGroup]="adminForm" ngxsForm="AdminView.adminForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="adminForm" ngxsForm="AdminView.adminForm">
     <div class="row">
       <div class="col">
         <p>
@@ -97,4 +97,6 @@
     </div>
   </form>
 </div>
-<actions-footer-buttons leftButtonName="{{ 'CANCEL' | translate }}" rightButtonName="{{ 'SAVE' | translate }}"></actions-footer-buttons>
+<actions-footer-buttons leftButtonName="{{ 'CANCEL' | translate }}" rightButtonName="{{ 'SAVE' | translate }}"
+  (leftButtonClicked)="onCancel()" (rightButtonClicked)="onSubmit()"
+></actions-footer-buttons>

@@ -3,10 +3,11 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { catchError, map, tap, throwError } from 'rxjs';
 import { BaseState } from 'src/app/_models/base-state.model';
 import { IApplicationUser, IBrowserUserModel } from '../models/user.model';
-import { GetAdminViewInfo, GetAdminViewInfoFailed, GetAdminViewInfoSuccess } from './admin.actions';
+import { GetAdminViewInfo, GetAdminViewInfoFailed, GetAdminViewInfoSuccess, SetAdminForm, UpdateAdminForm } from './admin.actions';
 import { AdminService } from 'src/app/_services/admin.service';
 import * as moment from 'moment';
 import { STANDARD_DATE_TIME_FORMAT } from 'src/app/shared/constants/date-formats';
+import { MessageModel, ResponseModel } from 'src/app/shared/models/service.model';
 
 export interface AdminViewStateModel extends BaseState {
   users: IApplicationUser[],
@@ -105,5 +106,27 @@ export class AdminState {
    ctx.patchState({
     users: adminView
    });
+  }
+
+  @Action(SetAdminForm)
+  setAdminForm(ctx: StateContext<AdminViewStateModel>, { adminForm }: SetAdminForm) {
+    ctx.patchState({
+      adminForm: {
+        model: adminForm
+      }
+    });
+   }
+
+   @Action(UpdateAdminForm)
+   updateAdminForm(ctx: StateContext<AdminViewStateModel>) {
+    return this.adminService.updateUser(ctx.getState().adminForm.model)
+    .pipe(
+      tap((res: MessageModel) => ctx.patchState({
+        message: res.message,
+      })),
+      catchError(error => {
+        return throwError(() => error)
+      }),
+    );
   }
 }

@@ -7,7 +7,6 @@ import { GetBrowserInfo } from './state/browser.actions';
 import { BrowserState } from './state/browser.state';
 import { CommandProviderService } from '../shared/services/command-provider.service';
 import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
-import { CommandType } from '../shared/enums/command-type.enum';
 
 @Component({
   selector: 'app-slickgrid-base',
@@ -81,31 +80,30 @@ export class SlickgridBaseComponent implements OnInit, OnDestroy {
   }
 
   onSelectedRowsChanged(e, args) {
-    this.naviOptions.forEach(nav => {
-      if (Array.isArray(args.rows) && this.gridObj) {
-        if (args.rows.length === 1) {
-          this.selectedRowsCount = 1;
-          const selectedRow = this.gridObj.getDataItem(args.rows[0]);
-          this.commandProviderService.setSelectedRowData(selectedRow);
-        }
+    if (Array.isArray(args.rows) && this.gridObj) {
+      if (args.rows.length === 1) {
+        this.selectedRowsCount = 1;
+        const selectedRow = this.gridObj.getDataItem(args.rows[0]);
+        this.commandProviderService.setSelectedRowData(selectedRow);
+      } else {
         this.selectedRowsCount = args.rows.length;
         args.rows.forEach((idx: number) => {
           const item = this.gridObj.getDataItem(idx);
           this.commandProviderService.setSelectedRowsData(item);
         });
       }
-    })
+    }
   }
 
   gridStateChanged(gridStateChanges: GridStateChange) {
     console.log('gridStateChanged', gridStateChanges);
+
   }
 
   onCellClicked(e, args) {
     // when clicking on any cell, we will make it the new selected row
     // however, we don't want to interfere with multiple row selection checkbox which is on 1st column cell
     if (args.cell !== 0) {
-      console.warn(args.row)
       this.gridObj.setSelectedRows([args.row]);
     }
   }

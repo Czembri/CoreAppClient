@@ -4,6 +4,7 @@ import { HeaderComponent } from "./header.component";
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
       TranslateModule,
       DragDropModule,
       MatIconModule,
-      MatButtonModule
+      MatButtonModule,
+      MatDialogModule,
     ],
 })
 export class HeaderModule { }

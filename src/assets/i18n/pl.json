@@ -57,5 +57,6 @@
   "CANCEL": "Anuluj",
   "SAVE": "Zapisz",
   "PROVIDE_EMAIL": "Wprowadź adres e-mail użyty do rejestracji:",
-  "EMAIL": "E-mail"
+  "EMAIL": "E-mail",
+  "SEND": "Wyślij"
 }

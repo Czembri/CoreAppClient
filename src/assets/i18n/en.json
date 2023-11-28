@@ -57,5 +57,6 @@
   "CANCEL": "Cancel",
   "SAVE": "Save",
   "PROVIDE_EMAIL": "Please, provide an e-mail which has been used for registration:",
-  "EMAIL": "E-mail"
+  "EMAIL": "E-mail",
+  "SEND": "Send"
 }
