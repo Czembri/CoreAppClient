@@ -18,6 +18,7 @@ export class LawAIComponent implements OnDestroy, OnInit {
   public data$ = this.store.select(LawAIState.messages);
 
   private destroyed$ = new Subject<void>();
+  private param?: number;
 
   constructor(private store: Store, private route: ActivatedRoute) {
     this.lawForm = new FormGroup({
@@ -30,6 +31,7 @@ export class LawAIComponent implements OnDestroy, OnInit {
       takeUntil(this.destroyed$),
       tap(params => {
         if (!!params['id']) {
+          this.param = params['id'];
           return this.store.dispatch(new GetChat(params['id']));
         }
         return this.store.dispatch(new LoadData());
@@ -38,7 +40,7 @@ export class LawAIComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
-    this.store.dispatch(new SaveChatOnDispose());
+    this.store.dispatch(new SaveChatOnDispose(this.param));
     this.destroyed$.next();
     this.destroyed$.complete();
   }

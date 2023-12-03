@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Actions, Store, ofActionCompleted } from '@ngxs/store';
 import { AdminState } from './state/admin.state';
-import { GetAdminViewInfo } from './state/admin.actions';
-import { Subject } from 'rxjs';
+import { AddNewAdminForm, GetAdminViewInfo, UpdateAdminForm } from './state/admin.actions';
+import { Subject, takeUntil } from 'rxjs';
 import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
 import { AddAdminCommand } from './commands/add-admin.command';
 import { CommandType } from '../shared/enums/command-type.enum';
@@ -25,7 +25,10 @@ export class AdminComponent implements OnInit, OnDestroy {
     private store: Store,
     private addAdminCommand: AddAdminCommand,
     private deleteAdminCommand: DeleteAdminCommand,
-    private editAdminCommand: EditAdminCommand) {}
+    private editAdminCommand: EditAdminCommand,
+    private actions$: Actions) {
+      this.store.dispatch(new GetAdminViewInfo());
+    }
 
   ngOnInit(): void {
     this.subNavigationOptions.push({
@@ -61,7 +64,12 @@ export class AdminComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.store.dispatch(new GetAdminViewInfo());
+    this.actions$.pipe(takeUntil(this.destroyed$),
+    ofActionCompleted(AddNewAdminForm, UpdateAdminForm)).subscribe({
+      next: () => {
+        this.store.dispatch(new GetAdminViewInfo());
+      }
+    })
   }
 
   ngOnDestroy(): void {

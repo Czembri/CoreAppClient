@@ -26,15 +26,15 @@ export interface IUserRole {
 }
 
 export interface IBrowserUserModel {
-  id: number;
+  id?: number;
   login: string;
-  creationDate: string;
-  modificationDate: string;
+  creationDate?: string;
+  modificationDate?: string;
   roles: string;
-  firstName: string;
-  lastName: string;
-  address: string;
-  city: string;
-  postalCode: string;
+  firstName?: string;
+  lastName?: string;
+  address?: string;
+  city?: string;
+  postalCode?: string;
   password: string;
 }

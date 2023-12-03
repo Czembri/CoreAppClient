@@ -7,7 +7,7 @@ import { Subject } from "rxjs";
 import { ICommandsDataTypeModel } from "src/app/shared/models/commands-data-type.model";
 import { postalCodePattern } from "src/app/shared/patterns/validation-patterns";
 import { Role } from "src/app/shared/roles/enums/role.enum";
-import { SetAdminForm, UpdateAdminForm } from "../state/admin.actions";
+import { AddNewAdminForm, SetAdminForm, UpdateAdminForm } from "../state/admin.actions";
 
 @Component({
   selector: 'admin-user-details',
@@ -56,7 +56,11 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    this.store.dispatch(new UpdateAdminForm());
+    if (this.adminForm.value.id) {
+      this.store.dispatch(new UpdateAdminForm());
+    } else {
+      this.store.dispatch(new AddNewAdminForm());
+    }
   }
 
   public onCancel() {

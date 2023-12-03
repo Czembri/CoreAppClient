@@ -48,11 +48,11 @@ export class LawAIState {
 
 
   @Action(SaveChatOnDispose)
-  public saveChat(ctx: StateContext<LawAIStateModel>) {
+  public saveChat(ctx: StateContext<LawAIStateModel>, { chatId } : SaveChatOnDispose) {
     if(ctx.getState().messages.length === 0) return;
     ctx.patchState({isLoading: true});
     ctx.dispatch(new ClearState())
-    return this.lawAIService.saveChat()
+    return this.lawAIService.saveChat(chatId)
     .pipe(
       tap(res => ctx.patchState({message: res.response})),
       tap(_ => ctx.dispatch(new ClearMemory())),

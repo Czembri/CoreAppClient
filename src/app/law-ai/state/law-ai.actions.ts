@@ -24,6 +24,7 @@ export class LoadData {
 
 export class SaveChatOnDispose {
   static readonly type = '[LAW-AI] Save chat on dispose';
+  constructor(public chatId?: number) {}
 }
 
 export class ClearState {

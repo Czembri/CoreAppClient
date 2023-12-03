@@ -29,8 +29,8 @@ export class LawAIService {
     return this.http.get<ResponseModel>(`${this.baseAiApiUrl}/clear-memory`,{headers: createSecretHeader()});
   }
 
-  saveChat(): Observable<ResponseModel> {
-    return this.http.post<ResponseModel>(`${this.baseUrl}save-chat`, {}, {headers: createSecretHeader()});
+  saveChat(chatId?: number): Observable<ResponseModel> {
+    return this.http.post<ResponseModel>(`${this.baseUrl}save-chat/${chatId}`, {}, {headers: createSecretHeader()});
   }
 
   getChats(): Observable<MessagesResponseModel[]> {

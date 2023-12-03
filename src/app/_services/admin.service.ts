@@ -16,4 +16,8 @@ export class AdminService {
   updateUser(userDto: IBrowserUserModel) {
     return this.http.put(`${this.baseUrl}`, userDto);
   }
+
+  addUser(userDto: IBrowserUserModel) {
+    return this.http.post(`${this.baseUrl}`, userDto);
+  }
 }
