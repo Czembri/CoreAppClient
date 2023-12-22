@@ -1,4 +1,4 @@
 <mat-dialog-actions align="end" class="footer-buttons">
-  <button mat-button [mat-dialog-close]="true" (click)="onLeftButtonClick()">{{ leftButtonName }}</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onRightButtonClick()">{{ rightButtonName }}</button>
+  <button [disabled]="disabled" mat-button [mat-dialog-close]="true" (click)="onLeftButtonClick()">{{ leftButtonName }}</button>
+  <button [disabled]="disabled" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onRightButtonClick()">{{ rightButtonName }}</button>
 </mat-dialog-actions>

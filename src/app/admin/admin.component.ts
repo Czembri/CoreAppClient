@@ -1,3 +1,4 @@
+import { DetailsAdminCommand } from './commands/details-popup-admin.command';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Actions, Store, ofActionCompleted } from '@ngxs/store';
 import { AdminState } from './state/admin.state';
@@ -28,7 +29,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     private addAdminCommand: AddAdminCommand,
     private deleteAdminCommand: DeleteAdminCommand,
     private editAdminCommand: EditAdminCommand,
-    private actions$: Actions) {
+    private actions$: Actions,
+    private detailsAdminCommand: DetailsAdminCommand) {
       this.store.dispatch(new GetAdminViewInfo());
     }
 
@@ -62,7 +64,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       text: 'OPEN_IN_POPUP',
       customLinkCssClasses: 'btn btn-warning me-2',
       action: () => {
-        console.warn('OPEN_IN_POPUP')
+        this.detailsAdminCommand.execute();
       }
     });
 

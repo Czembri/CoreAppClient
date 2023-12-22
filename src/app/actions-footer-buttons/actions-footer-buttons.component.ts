@@ -9,6 +9,7 @@ export class ActionsFooterButtonsComponent {
 
   @Input() public leftButtonName: string;
   @Input() public rightButtonName: string;
+  @Input() public disabled: boolean;
 
   @Output() public leftButtonClicked = new EventEmitter();
   @Output() public rightButtonClicked = new EventEmitter();

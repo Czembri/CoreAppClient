@@ -1,6 +1,7 @@
 .img-style {
   width: 320px;
   height: 250px;
+  margin: auto;
 }
 
 .img-container {
@@ -18,6 +19,7 @@
 .card-body {
   color: rgb(102, 102, 102);
   text-align: center;
+  margin: 10px;
 }
 
 .btn-style {

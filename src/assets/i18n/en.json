@@ -59,5 +59,6 @@
   "PROVIDE_EMAIL": "Please, provide an e-mail which has been used for registration:",
   "EMAIL": "E-mail",
   "SEND": "Send",
-  "ERROR": "Error"
+  "ERROR": "Error",
+	"DETAILS": "Details"
 }

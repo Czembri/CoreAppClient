@@ -48,6 +48,10 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
     });
 
     this.store.dispatch(new SetAdminForm(this.dialogData.data));
+
+    if (this.dialogData.readonly) {
+      this.adminForm.disable();
+    }
   }
 
   public ngOnDestroy(): void {

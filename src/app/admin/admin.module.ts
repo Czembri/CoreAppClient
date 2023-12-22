@@ -12,8 +12,6 @@ import { HeaderModule } from "../header/header.module";
 import { ActionsFooterButtonsModule } from "../actions-footer-buttons/actions-footer-buttons.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
 
 
 

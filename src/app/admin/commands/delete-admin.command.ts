@@ -22,11 +22,11 @@ export class DeleteAdminCommand {
   execute(): void {
     const selectedRowsData = this.commandProviderService.getSelectedRowsData() as IBrowserUserModel[];
     const currentUser = this.accountService.getCurrentUser();
-    console.warn(selectedRowsData, 'DeleteAdminCommand selectedRowData delete')
 
     selectedRowsData.forEach(user => {
       if (user.login === currentUser.userName) {
         this.dialogService.openErrorDialog(this.translateService.instant('ERROR'), this.translateService.instant('ADMIN_DETAILS.DELETE_ERROR_MESSAGE'));
+        return;
       }
 
       this.store.dispatch(new DeleteUser(user.id));

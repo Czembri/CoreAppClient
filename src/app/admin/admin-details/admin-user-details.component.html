@@ -6,7 +6,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.LOGIN' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.LOGIN' | translate }}" formControlName="login">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.LOGIN' | translate }}" formControlName="login">
           </mat-form-field>
         </p>
       </div>
@@ -14,7 +14,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.PASSWORD' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.PASSWORD' | translate }}" formControlName="password" type="password">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.PASSWORD' | translate }}" formControlName="password" type="password">
           </mat-form-field>
         </p>
       </div>
@@ -24,7 +24,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.MODIFICATION_DATE' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.MODIFICATION_DATE' | translate }}" formControlName="modificationDate">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.MODIFICATION_DATE' | translate }}" formControlName="modificationDate">
           </mat-form-field>
         </p>
       </div>
@@ -32,7 +32,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.ROLES' | translate }}</mat-label>
-            <mat-select formControlName="roles">
+            <mat-select [disabled]="dialogData.readonly" formControlName="roles">
               <mat-option *ngFor="let role of availableRoles | keyvalue" [value]="role.key">
                 {{role.value | translate}}
               </mat-option>
@@ -46,7 +46,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.FIRSTNAME' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.FIRSTNAME' | translate }}" formControlName="firstName">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.FIRSTNAME' | translate }}" formControlName="firstName">
           </mat-form-field>
         </p>
       </div>
@@ -54,7 +54,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.LASTNAME' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.LASTNAME' | translate }}" formControlName="lastName">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.LASTNAME' | translate }}" formControlName="lastName">
           </mat-form-field>
         </p>
       </div>
@@ -64,7 +64,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.ADDRESS' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.ADDRESS' | translate }}" formControlName="address">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.ADDRESS' | translate }}" formControlName="address">
           </mat-form-field>
         </p>
       </div>
@@ -72,7 +72,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.CITY' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.CITY' | translate }}" formControlName="city">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.CITY' | translate }}" formControlName="city">
           </mat-form-field>
         </p>
       </div>
@@ -82,7 +82,7 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}" formControlName="postalCode">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}" formControlName="postalCode">
           </mat-form-field>
         </p>
       </div>
@@ -90,13 +90,13 @@
         <p>
           <mat-form-field appearance="fill">
             <mat-label>{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}</mat-label>
-            <input matInput placeholder="{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}" formControlName="creationDate">
+            <input [disabled]="dialogData.readonly" matInput placeholder="{{ 'ADMIN_DETAILS.CREATION_DATE' | translate }}" formControlName="creationDate">
           </mat-form-field>
         </p>
       </div>
     </div>
   </form>
 </div>
-<actions-footer-buttons leftButtonName="{{ 'CANCEL' | translate }}" rightButtonName="{{ 'SAVE' | translate }}"
+<actions-footer-buttons [disabled]="dialogData.readonly" leftButtonName="{{ 'CANCEL' | translate }}" rightButtonName="{{ 'SAVE' | translate }}"
   (leftButtonClicked)="onCancel()" (rightButtonClicked)="onSubmit()"
 ></actions-footer-buttons>
