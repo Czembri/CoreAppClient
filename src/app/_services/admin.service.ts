@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IApplicationUser, IBrowserUserModel } from '../admin/models/user.model';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class AdminService {
 
   getUsersInfoAdminView() {
     return this.http.get<Array<IApplicationUser>>(`${this.baseUrl}`);
+  }
+
+  getUser(userName: string) {
+    return this.http.get<IApplicationUser>(`${this.baseUrl}/usr-nm?user=${userName}`);
   }
 
   updateUser(userDto: IBrowserUserModel) {

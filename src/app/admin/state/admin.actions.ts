@@ -42,3 +42,7 @@ export class DeleteUser {
   static readonly type = '[ADMIN] Delete user';
   constructor(public id: number) {};
 }
+export class GetUserByUsername {
+  static readonly type = '[ADMIN] Get user';
+  constructor(public userName: string) {};
+}

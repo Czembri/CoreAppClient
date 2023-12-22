@@ -11,6 +11,14 @@ export interface IApplicationUser {
   userInfo: IUserInfo;
 }
 
+export interface ICurrentUserForm {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  postalCode: string;
+}
+
 export interface IUserInfo {
   id: number;
   firstName: string;

@@ -12,11 +12,12 @@ import { HeaderModule } from "../header/header.module";
 import { ActionsFooterButtonsModule } from "../actions-footer-buttons/actions-footer-buttons.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { EditProfileComponent } from "./edit-profile/edit-profile.component";
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminUserDetailsComponent],
+  declarations: [AdminComponent, AdminUserDetailsComponent, EditProfileComponent],
   imports: [
     AdminRoutingModule,
     CommonModule,

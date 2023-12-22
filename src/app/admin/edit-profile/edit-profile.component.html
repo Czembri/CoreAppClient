@@ -1,0 +1,53 @@
+<div class="component-container">
+  <form [formGroup]="formGroup" ngxsForm="AdminView.currentUserForm">
+    <div class="row">
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.FIRSTNAME' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.FIRSTNAME' | translate }}" formControlName="firstName">
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.LASTNAME' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.LASTNAME' | translate }}" formControlName="lastName">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.ADDRESS' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.ADDRESS' | translate }}" formControlName="address">
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.CITY' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.CITY' | translate }}" formControlName="city">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'ADMIN_DETAILS.POSTAL_CODE' | translate }}" formControlName="postalCode">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+  </form>
+  <actions-footer-buttons rightButtonName="{{ 'SAVE' | translate }}" (rightButtonClicked)="onSubmit()"
+></actions-footer-buttons>
+</div>
+<mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>

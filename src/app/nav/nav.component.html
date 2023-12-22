@@ -16,7 +16,7 @@
         <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
             <a class="dropdown-toggle text-light" dropdownToggle>{{ 'WELCOME' | translate }} {{ accountService.getCurrentUserName() }}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
-                <a class="dropdown-item">{{ 'EDIT_PROFILE' | translate }}</a>
+                <a class="dropdown-item"  href="/admin/edit-profile">{{ 'EDIT_PROFILE' | translate }}</a>
                 <ng-container *ngIf="roleService.hasRole('Admin')">
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/admin">{{ 'ADMIN_VIEW' | translate }}</a>

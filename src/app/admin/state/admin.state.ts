@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { catchError, map, tap, throwError } from 'rxjs';
 import { BaseState } from 'src/app/_models/base-state.model';
-import { IApplicationUser, IBrowserUserModel } from '../models/user.model';
-import { AddNewAdminForm, DeleteUser, GetAdminViewInfo, GetAdminViewInfoFailed, GetAdminViewInfoSuccess, SetAdminForm, UpdateAdminForm } from './admin.actions';
+import { IApplicationUser, IBrowserUserModel, ICurrentUserForm } from '../models/user.model';
+import { AddNewAdminForm, DeleteUser, GetAdminViewInfo, GetAdminViewInfoFailed, GetAdminViewInfoSuccess, GetUserByUsername, SetAdminForm, UpdateAdminForm } from './admin.actions';
 import { AdminService } from 'src/app/_services/admin.service';
 import * as moment from 'moment';
 import { STANDARD_DATE_TIME_FORMAT } from 'src/app/shared/constants/date-formats';
@@ -13,12 +13,18 @@ export interface AdminViewStateModel extends BaseState {
   users: IApplicationUser[],
   adminForm?: {
     model: IBrowserUserModel;
-  }
+  },
+  currentUserForm: {
+    model: ICurrentUserForm;
+  };
 }
 
 @State<AdminViewStateModel>({
   name: 'AdminView',
   defaults: {
+    currentUserForm: {
+      model: undefined,
+    },
     users: [{
       id: null,
       creationDate: null,
@@ -127,7 +133,9 @@ export class AdminState {
    @Action(UpdateAdminForm)
    updateAdminForm(ctx: StateContext<AdminViewStateModel>) {
     ctx.patchState({ isLoading: true })
-    return this.adminService.updateUser(ctx.getState().adminForm.model)
+    const model = ctx.getState().adminForm.model;
+    model.modificationDate = moment(new Date()).format(STANDARD_DATE_TIME_FORMAT);
+    return this.adminService.updateUser(model)
     .pipe(
       tap((res: MessageModel) => ctx.patchState({
         message: res.message,
@@ -153,6 +161,30 @@ export class AdminState {
        return throwError(() => error)
      }),
    );
+ }
+
+ @Action(GetUserByUsername)
+ getUserByUsername(ctx: StateContext<AdminViewStateModel>, { userName }: GetUserByUsername) {
+  ctx.patchState({ isLoading: true })
+  return this.adminService.getUser(userName)
+  .pipe(
+    tap((res: IApplicationUser) => ctx.patchState({
+      currentUserForm: {
+        model: {
+          address: res.userInfo.address,
+          city: res.userInfo.city,
+          firstName: res.userInfo.firstName,
+          lastName: res.userInfo.lastName,
+          postalCode: res.userInfo.postalCode,
+        }
+      },
+      isLoading: false,
+    })),
+    catchError(error => {
+      ctx.patchState({ isLoading: false });
+      return throwError(() => error)
+    }),
+  );
  }
 
   @Action(DeleteUser)
