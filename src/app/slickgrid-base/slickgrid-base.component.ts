@@ -81,10 +81,13 @@ export class SlickgridBaseComponent implements OnInit, OnDestroy {
 
   onSelectedRowsChanged(e, args) {
     if (Array.isArray(args.rows) && this.gridObj) {
+      this.commandProviderService.clearRowsData();
       if (args.rows.length === 1) {
         this.selectedRowsCount = 1;
         const selectedRow = this.gridObj.getDataItem(args.rows[0]);
         this.commandProviderService.setSelectedRowData(selectedRow);
+
+        this.commandProviderService.setSelectedRowsData(selectedRow);
       } else {
         this.selectedRowsCount = args.rows.length;
         args.rows.forEach((idx: number) => {

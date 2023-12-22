@@ -3,7 +3,7 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { catchError, map, tap, throwError } from 'rxjs';
 import { BaseState } from 'src/app/_models/base-state.model';
 import { IApplicationUser, IBrowserUserModel } from '../models/user.model';
-import { AddNewAdminForm, GetAdminViewInfo, GetAdminViewInfoFailed, GetAdminViewInfoSuccess, SetAdminForm, UpdateAdminForm } from './admin.actions';
+import { AddNewAdminForm, DeleteUser, GetAdminViewInfo, GetAdminViewInfoFailed, GetAdminViewInfoSuccess, SetAdminForm, UpdateAdminForm } from './admin.actions';
 import { AdminService } from 'src/app/_services/admin.service';
 import * as moment from 'moment';
 import { STANDARD_DATE_TIME_FORMAT } from 'src/app/shared/constants/date-formats';
@@ -66,9 +66,15 @@ export class AdminState {
    });
   }
 
+  @Selector()
+  public static isLoading(state: AdminViewStateModel): boolean {
+    return state.isLoading;
+  }
+
   @Action(GetAdminViewInfo)
   public getAdminViewInfo(ctx: StateContext<AdminViewStateModel>) {
     const users = new Array<IApplicationUser>;
+    ctx.patchState({ isLoading: true });
     return this.adminService.getUsersInfoAdminView().pipe(
       map(adminInfos => {
         adminInfos.forEach(dto => {
@@ -104,6 +110,7 @@ export class AdminState {
   @Action(GetAdminViewInfoSuccess)
   getUsersSuccess(ctx: StateContext<AdminViewStateModel>, { adminView }: GetAdminViewInfoSuccess) {
    ctx.patchState({
+    isLoading: false,
     users: adminView
    });
   }
@@ -119,10 +126,12 @@ export class AdminState {
 
    @Action(UpdateAdminForm)
    updateAdminForm(ctx: StateContext<AdminViewStateModel>) {
+    ctx.patchState({ isLoading: true })
     return this.adminService.updateUser(ctx.getState().adminForm.model)
     .pipe(
       tap((res: MessageModel) => ctx.patchState({
         message: res.message,
+        isLoading: false,
       })),
       catchError(error => {
         return throwError(() => error)
@@ -133,14 +142,31 @@ export class AdminState {
 
   @Action(AddNewAdminForm)
   addNewAdminForm(ctx: StateContext<AdminViewStateModel>) {
+    ctx.patchState({ isLoading: true })
    return this.adminService.addUser(ctx.getState().adminForm.model)
    .pipe(
      tap((res: MessageModel) => ctx.patchState({
        message: res.message,
+       isLoading: false,
      })),
      catchError(error => {
        return throwError(() => error)
      }),
    );
  }
+
+  @Action(DeleteUser)
+  deleteUser(ctx: StateContext<AdminViewStateModel>, { id }: DeleteUser) {
+    ctx.patchState({ isLoading: true })
+   return this.adminService.deleteUser(id)
+   .pipe(
+     tap((res: MessageModel) => ctx.patchState({
+       message: res.message,
+       isLoading: false,
+     })),
+     catchError(error => {
+       return throwError(() => error)
+     }),
+   );
+  }
 }

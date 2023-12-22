@@ -22,4 +22,8 @@ export class CommandProviderService {
   setSelectedRowsData(rowsData: object): void {
     this.selectedRowsData.push(rowsData);
   }
+
+  clearRowsData(): void {
+    this.selectedRowsData = [];
+  }
 }

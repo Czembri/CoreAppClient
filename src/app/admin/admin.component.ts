@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Actions, Store, ofActionCompleted } from '@ngxs/store';
 import { AdminState } from './state/admin.state';
-import { AddNewAdminForm, GetAdminViewInfo, UpdateAdminForm } from './state/admin.actions';
-import { Subject, takeUntil } from 'rxjs';
+import { AddNewAdminForm, DeleteUser, GetAdminViewInfo, UpdateAdminForm } from './state/admin.actions';
+import { BehaviorSubject, Subject, combineLatest, merge, takeUntil } from 'rxjs';
 import { ISubNavigationOptions } from '../sub-navigation/sub-nav.model';
 import { AddAdminCommand } from './commands/add-admin.command';
 import { CommandType } from '../shared/enums/command-type.enum';
@@ -18,6 +18,8 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   public users$ = this.store.select(AdminState.users);
   public subNavigationOptions = new Array<ISubNavigationOptions>();
+  public localLoading$ = new BehaviorSubject<boolean>(false);
+  public loading$ = merge(this.store.select(AdminState.isLoading), this.localLoading$);
 
   private destroyed$ = new Subject<void>();
 
@@ -65,7 +67,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     });
 
     this.actions$.pipe(takeUntil(this.destroyed$),
-    ofActionCompleted(AddNewAdminForm, UpdateAdminForm)).subscribe({
+    ofActionCompleted(AddNewAdminForm, UpdateAdminForm, DeleteUser)).subscribe({
       next: () => {
         this.store.dispatch(new GetAdminViewInfo());
       }

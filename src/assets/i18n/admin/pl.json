@@ -13,6 +13,7 @@
     "ADMIN": "Administrator",
     "SUPER_ADMIN": "Super admin",
     "MODERATOR": "Moderator",
-    "BASIC": "Użytkownik podstawowy"
+    "BASIC": "Użytkownik podstawowy",
+    "DELETE_ERROR_MESSAGE": "Nie możesz usunąć użytkownika, na którego konto jesteś właśnie zalogowany!"
   }
 }

@@ -20,4 +20,8 @@ export class AdminService {
   addUser(userDto: IBrowserUserModel) {
     return this.http.post(`${this.baseUrl}`, userDto);
   }
+
+  deleteUser(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
 }

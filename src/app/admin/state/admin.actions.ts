@@ -37,3 +37,8 @@ export class UpdateAdminForm {
 export class AddNewAdminForm {
   static readonly type = '[ADMIN] Add new admin form';
 }
+
+export class DeleteUser {
+  static readonly type = '[ADMIN] Delete user';
+  constructor(public id: number) {};
+}

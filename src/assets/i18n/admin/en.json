@@ -13,6 +13,7 @@
     "ADMIN": "Admin",
     "SUPER_ADMIN": "Super admin",
     "MODERATOR": "Moderator",
-    "BASIC": "Basic user"
+    "BASIC": "Basic user",
+    "DELETE_ERROR_MESSAGE": "You can't delete user that is currently logged in"
   }
 }

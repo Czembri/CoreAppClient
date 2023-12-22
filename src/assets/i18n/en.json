@@ -58,5 +58,6 @@
   "SAVE": "Save",
   "PROVIDE_EMAIL": "Please, provide an e-mail which has been used for registration:",
   "EMAIL": "E-mail",
-  "SEND": "Send"
+  "SEND": "Send",
+  "ERROR": "Error"
 }
