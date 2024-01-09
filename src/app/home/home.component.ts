@@ -23,12 +23,7 @@ export class HomeComponent implements OnInit {
     switchMap(() => this.isLoadingLocal$),
   );
 
-  chats$ = this.store.select(LawAIState.chats);
-  user$ = this.accountService.currentUser$.pipe(tap(user => {
-    if (user) {
-      this.store.dispatch(new GetChats());
-    }
-  }));
+  user$ = this.accountService.currentUser$;
 
   constructor(
     public accountService: AccountService,

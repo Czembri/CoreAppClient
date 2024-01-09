@@ -57,22 +57,10 @@
             </div>
         </div>
     </div>
+
+    <!-- after login -->
     <ng-container *ngIf="user$ | async">
-      <ng-container *ngIf="(chats$ | async) as chats" class="container">
-          <div class="row justify-content-start">
-            <ng-container *ngFor="let chat of chats; let i;">
-              <div class="col-md-3">
-                <a href="law-ai/{{chat.id}}">
-                  <div class="card-box card">
-                    <div class="card-body">
-                      <p class="card-text">{{chat.response[1].content}}</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </ng-container>
-          </div>
-      </ng-container>
+
     </ng-container>
 
 <mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>

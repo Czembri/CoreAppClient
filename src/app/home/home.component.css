@@ -52,22 +52,3 @@ html {
 .navigation-link {
   cursor: pointer;
 }
-
-.card-box {
-  width: 18rem;
-}
-
-.card-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.col-md-3 {
-  margin: 10px 0;
-}

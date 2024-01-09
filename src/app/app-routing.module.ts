@@ -40,6 +40,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'chat-cards',
+    loadComponent: () => import('./chat-cards/chat-cards.component').then(m => m.ChatCardsComponent),
+    canActivate: [AuthGuardService]
+  },
+  {
     path: '', component: HomeComponent
   },
   {

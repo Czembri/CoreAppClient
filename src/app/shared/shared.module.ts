@@ -5,15 +5,18 @@ import { TranslateModule } from "@ngx-translate/core";
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { EvenOddPipe } from './pipes/even-odd.pipe';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { DateTimeFormatPipe } from "./pipes/date-time-format.pipe";
 
 @NgModule({
     declarations: [
         HttpErrorDialogComponent,
         EvenOddPipe,
+        DateTimeFormatPipe
     ],
     exports: [
         HttpErrorDialogComponent,
         EvenOddPipe,
+        DateTimeFormatPipe
     ],
     imports: [
         MatDialogModule,

@@ -1,0 +1,17 @@
+<ng-container *ngIf="(chats$ | async) as chats">
+    <div class="row gx-4 justify-content-center">
+      <ng-container *ngFor="let chat of chats; index as i">
+          <div class="column">
+            <div class="card text-center card-box h-100">
+              <div class="card-body">
+                <p class="card-text">{{chat.response[1].content}}</p>
+                <a  href="law-ai/{{chat.id}}" class="btn">{{ 'GO_TO_CHAT' | translate }}</a>
+              </div>
+              <div class="card-footer text-muted">
+                {{ chat.creationDate | dateTimeFormatPipe }}
+              </div>
+            </div>
+        </div>
+      </ng-container>
+  </div>
+</ng-container>

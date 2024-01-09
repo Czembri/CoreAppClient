@@ -47,6 +47,13 @@ export class NavComponent implements OnInit, OnDestroy {
 
         this.navItemsList.push(<NavigationItem>{
           class: 'nav-link',
+          url: '/chat-cards',
+          translation: translation['CHAT_CARDS'],
+          visible: this.roleService.hasRole(RoleString.Admin)
+        });
+
+        this.navItemsList.push(<NavigationItem>{
+          class: 'nav-link',
           url: '/law-ai',
           translation: translation['LAW-AI'],
           visible: this.roleService.hasRole(RoleString.Admin)

@@ -10,4 +10,5 @@ export interface AIMessageResponseModel {
 export interface MessagesResponseModel {
   response: MessageAi[];
   id: number;
+  creationDate?: Date;
 }

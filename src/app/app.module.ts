@@ -100,6 +100,7 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     { prefix: './assets/i18n/admin/', suffix: '.json' },
     { prefix: './assets/i18n/products/', suffix: '.json' },
     { prefix: './assets/i18n/law-ai/', suffix: '.json' },
+    { prefix: './assets/i18n/chat-cards/', suffix: '.json' },
     { prefix: './assets/i18n/', suffix: '.json' },
   ]);
 }
