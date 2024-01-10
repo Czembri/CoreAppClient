@@ -67,5 +67,11 @@
   "CHAT_CARD_TEXT":"Porozmawiaj ze swoim prawnikiem!",
   "DOCUMENT_GENERATOR_TEXT": "Wygeneruj dokumenty na podstawie danych, które dostarczysz. Nasz bot AI zrobi resztę za Ciebie!",
   "CHAT_CARD_LIST": "Lista rozmów z botem",
-  "CHAT_CARD_LIST_TEXT": "Zobacz swoje rozmowy z botem!"
+  "CHAT_CARD_LIST_TEXT": "Zobacz swoje rozmowy z botem!",
+  "DOCUMENT_ANALYZER": "Analizator dokumentów",
+  "DOCUMENT_ANALYZER_TEXT": "Przeanalizuj dokumenty, które dostarczysz. Nasz bot AI zrobi resztę za Ciebie!",
+  "HOME_TEXT": "Twoja przyszłość jest tym co robisz dzisiaj!",
+  "UPLOAD": "Prześlij plik do analizy",
+  "FILE_ANALYZE_RESULT_TITLE": "Wynik analizy pliku",
+  "GENERATED_BY": "Wygenerowany przez OpenAI API"
 }

@@ -35,13 +35,18 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'law-document-generator',
+    path: 'document-generator',
     loadChildren: () => import('./law-document-generator/law-document.module').then(m => m.LawDocumentModule),
     canActivate: [AuthGuardService]
   },
   {
     path: 'chat-cards',
     loadComponent: () => import('./chat-cards/chat-cards.component').then(m => m.ChatCardsComponent),
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'document-analyzer',
+    loadComponent: () => import('./document-analyzer/document-analyzer.component').then(m => m.DocumentAnalyzerComponent),
     canActivate: [AuthGuardService]
   },
   {

@@ -1,6 +1,6 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Store } from '@ngxs/store';
+import { Actions, Store, ofAction } from '@ngxs/store';
 import { LawAIState } from '../law-ai/state/law-ai.state';
 import { GetChats } from '../law-ai/state/law-ai.actions';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,23 +17,26 @@ import { SharedModule } from '../shared/shared.module';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ChatCardsComponent implements AfterViewInit {
+export class ChatCardsComponent implements OnInit {
   chats$ = this.store.select(LawAIState.chats);
   isLoading$ = this.store.select(LawAIState.isLoading);
 
-  constructor(private store: Store, private dialog: MatDialog) {
+  constructor(private store: Store, private dialog: MatDialog, private acitons: Actions) {
     this.store.dispatch(new GetChats());
   }
 
-  ngAfterViewInit(): void {
-    this.dialog.open(InfoPopupMessageComponent, {
-      width: '30%',
-      height: 'fit-content',
-      disableClose: true,
-      data: {
-        messageKey: 'CHAT_CARDS_INFO_MESSAGE',
-        titleKey: 'CHAT_CARDS_INFO_TITLE'
-      }
+  ngOnInit(): void {
+    this.acitons.pipe(ofAction(GetChats)).subscribe(() => {
+      this.dialog.open(InfoPopupMessageComponent, {
+        width: '30%',
+
+        height: 'fit-content',
+        disableClose: true,
+        data: {
+          messageKey: 'CHAT_CARDS_INFO_MESSAGE',
+          titleKey: 'CHAT_CARDS_INFO_TITLE'
+        }
+      });
     });
   }
 }

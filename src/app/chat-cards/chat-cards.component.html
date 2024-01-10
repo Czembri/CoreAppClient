@@ -16,4 +16,4 @@
   </div>
 </ng-container>
 
-<mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>
+<app-loader [isLoading]="isLoading$ | async"></app-loader>

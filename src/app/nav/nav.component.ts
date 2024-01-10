@@ -61,8 +61,15 @@ export class NavComponent implements OnInit, OnDestroy {
 
         this.navItemsList.push(<NavigationItem>{
           class: 'nav-link',
-          url: '/law-document-generator',
+          url: '/document-generator',
           translation: translation['DOCUMENT_GENERATOR'],
+          visible: this.roleService.hasRole(RoleString.Admin)
+        });
+
+        this.navItemsList.push(<NavigationItem>{
+          class: 'nav-link',
+          url: '/document-analyzer',
+          translation: translation['DOCUMENT_ANALYZER'],
           visible: this.roleService.hasRole(RoleString.Admin)
         });
       });

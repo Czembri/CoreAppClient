@@ -1,0 +1,33 @@
+
+<div class="page-container">
+  <input
+    hidden
+    type="file"
+    #uploader
+    (change)="uploadFile($event)"
+  />
+  <div class="box">
+  <button (click)="uploader.click()" class="btn btn-three">
+    <span>{{ 'UPLOAD' | translate }}</span>
+  </button>
+  </div>
+
+  <ng-container *ngIf="displayResult$ | async as result">
+    <div class="result">
+      <div class="card text-center">
+        <div class="card-header">
+          {{ 'FILE_ANALYZE_RESULT_TITLE' | translate }}
+        </div>
+        <div class="card-body">
+          <pre>{{ result }}</pre>
+        </div>
+        <div class="card-footer text-muted ">
+          {{ 'GENERATED_BY' | translate }}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+<app-loader [isLoading]="isLoading$ | async"></app-loader>

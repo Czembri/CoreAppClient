@@ -103,3 +103,11 @@ a {
   text-decoration: none;
   color: #20c997;
 }
+
+a:hover {
+  text-decoration: none;
+  color: #0f684d;
+}
+
+
+/* text block */
