@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { LawAIState } from '../law-ai/state/law-ai.state';
@@ -17,14 +17,15 @@ import { SharedModule } from '../shared/shared.module';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ChatCardsComponent implements OnInit {
+export class ChatCardsComponent implements AfterViewInit {
   chats$ = this.store.select(LawAIState.chats);
+  isLoading$ = this.store.select(LawAIState.isLoading);
 
   constructor(private store: Store, private dialog: MatDialog) {
     this.store.dispatch(new GetChats());
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.dialog.open(InfoPopupMessageComponent, {
       width: '30%',
       height: 'fit-content',

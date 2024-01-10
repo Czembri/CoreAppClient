@@ -9,7 +9,7 @@
           </div>
         </ng-container>
       </div>
-    <mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>
+      <app-loader [isLoading]="isLoading$ | async"></app-loader>
   </div>
   <div class="law-container">
     <form [formGroup]="lawForm" class="law-form">
@@ -23,8 +23,9 @@
               cdkAutosizeMinRows="2"
               cdkAutosizeMaxRows="5"
               (keyup.enter)="submitQuery()"></textarea>
-          <button mat-fab extended (click)="submitQuery()">
+          <button class="btn" mat-fab extended (click)="submitQuery()">
             <mat-icon><i class="fa-solid fa-magnifying-glass"></i></mat-icon>
+            <span class="ask-lawyer-btn__text">{{ 'LAW_AI_VIEW.SUBMIT_QUESTION' | translate }}</span>
           </button>
       </mat-form-field>
     </form>

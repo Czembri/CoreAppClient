@@ -21,6 +21,7 @@
     "DOWNLOAD_JSON": "Pobierz .json",
     "DOWNLOAD_XML": "Pobierz .xml",
     "DOCUMENT_SENDER_PHONE": "Telefon nadawcy: ",
-    "DOCUMENT_RECIPIENT_PHONE": "Telefon odbiorcy: "
+    "DOCUMENT_RECIPIENT_PHONE": "Telefon odbiorcy: ",
+    "SUBMIT_QUESTION": "Zapytaj prawnika"
   }
 }

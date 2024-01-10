@@ -21,6 +21,7 @@
     "DOWNLOAD_JSON": "Download .json",
     "DOWNLOAD_XML": "Download .xml",
     "DOCUMENT_SENDER_PHONE": "Sender phone: ",
-    "DOCUMENT_RECIPIENT_PHONE": "Recipient phone: "
+    "DOCUMENT_RECIPIENT_PHONE": "Recipient phone: ",
+    "SUBMIT_QUESTION": "Submit question"
   }
 }

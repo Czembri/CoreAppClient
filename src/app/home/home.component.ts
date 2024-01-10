@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ILogin } from '../nav/login.model';
 import { AccountService } from '../_services/account.service';
-import { BehaviorSubject, combineLatestWith, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { GetChats } from '../law-ai/state/law-ai.actions';
 import { LawAIState } from '../law-ai/state/law-ai.state';
 
 @Component({
@@ -12,7 +11,7 @@ import { LawAIState } from '../law-ai/state/law-ai.state';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   private isLoadingLocal$ = new BehaviorSubject<boolean>(false);
   registerMode = false;
   model: ILogin;
@@ -28,8 +27,6 @@ export class HomeComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     private router: Router, public store: Store) {}
-
-  ngOnInit(): void {}
 
   registerToggle() {
     this.registerMode = !this.registerMode;

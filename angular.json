@@ -56,7 +56,9 @@
                 "input": "node_modules/@angular/material/prebuilt-themes/purple-green.css"
               }
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/effects.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -128,7 +130,8 @@
               "node_modules/jquery-ui/dist/jquery-ui.min.js",
               "node_modules/slickgrid/lib/jquery.event.drag-2.3.0.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
-              "node_modules/multiple-select-modified/src/multiple-select.js"
+              "node_modules/multiple-select-modified/src/multiple-select.js",
+              "src/assets/scripts/effects.js"
             ]
           }
         }

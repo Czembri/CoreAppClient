@@ -28,7 +28,7 @@
 	"LOGIN": "Zaloguj się",
 	"LOGOUT": "Wyloguj",
 	"OPEN_IN_POPUP": "Otwórz w popupie",
-	"PAGE_TITLE": "SAMPLE",
+	"PAGE_TITLE": "Prawo AI",
 	"PASSWORD": "Hasło",
 	"SIGN_UP": "Zapisz się",
 	"TOGGLE_FILTER_ROW": "Przełącz wiersz filtra",
@@ -61,5 +61,11 @@
   "PROVIDE_EMAIL": "Wprowadź adres e-mail użyty do rejestracji:",
   "EMAIL": "E-mail",
   "SEND": "Wyślij",
-  "ERROR": "Error"
+  "ERROR": "Error",
+  "WELCOME_TEXT": "Cześć! Jestem twoim osobistym prawnikiem. Sprawdź co mogę Ci zaoferować!",
+  "CHAT": "Czat",
+  "CHAT_CARD_TEXT":"Porozmawiaj ze swoim prawnikiem!",
+  "DOCUMENT_GENERATOR_TEXT": "Wygeneruj dokumenty na podstawie danych, które dostarczysz. Nasz bot AI zrobi resztę za Ciebie!",
+  "CHAT_CARD_LIST": "Lista rozmów z botem",
+  "CHAT_CARD_LIST_TEXT": "Zobacz swoje rozmowy z botem!"
 }

@@ -41,7 +41,7 @@
     "font-awesome": "^4.7.0",
     "husky": "^8.0.3",
     "immer": "^3.3.0",
-    "jquery": "^3.6.3",
+    "jquery": "npm:jQuery@^1.7.4",
     "jQuery": "^1.7.4",
     "moment": "^2.29.4",
     "ng-webdatarocks": "^1.4.9",

@@ -27,7 +27,7 @@
 	"LOGIN": "Login",
 	"LOGOUT": "Logout",
 	"OPEN_IN_POPUP": "Open in popup",
-	"PAGE_TITLE": "SAMPLE",
+	"PAGE_TITLE": "Law AI",
 	"PASSWORD": "Password",
 	"SIGN_UP": "Sign Up",
 	"TOGGLE_FILTER_ROW": "Toggle filter row",
@@ -61,5 +61,11 @@
   "EMAIL": "E-mail",
   "SEND": "Send",
   "ERROR": "Error",
-	"DETAILS": "Details"
+	"DETAILS": "Details",
+  "WELCOME_TEXT": "Hi! I am your personal lawyer. Take a look at what I can do for you!",
+  "CHAT": "Chat",
+  "CHAT_TEXT":"Talk to your personal lawyer",
+  "DOCUMENT_GENERATOR_TEXT": "Generate documents with data that you provide!",
+  "CHAT_CARD_LIST": "Chat list",
+  "CHAT_CARD_LIST_TEXT": "List of all your chats, that you have with your personal lawyer"
 }

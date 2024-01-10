@@ -24,9 +24,45 @@
   max-height: 8em;
 }
 
+.btn {
+  --c:  #20c997;
+  box-shadow: 0 0 0 .1em inset var(--c);
+  --_g: linear-gradient(var(--c) 0 0) no-repeat;
+  background:
+    var(--_g) calc(var(--_p,0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p,0%)) 0%,
+    var(--_g) calc(var(--_p,0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p,0%)) 100%;
+  background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+  outline-offset: .1em;
+  transition: background-size .4s, background-position 0s .4s;
+}
+.btn:hover {
+  --_p: 100%;
+  transition: background-position .4s, background-size 0s;
+}
+.btn:active {
+  box-shadow: 0 0 9e9q inset #0009;
+  background-color: var(--c);
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 400;
+  border: none;
+  background-color: rgb(112, 111, 111) !important ;
+  color: white;
+}
+
+
 button {
   float: right;
   margin-top: 0.8rem;
+}
+
+.ask-lawyer-btn__text{
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .response-container {
@@ -81,4 +117,8 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
+}
+
+.fa-solid {
+  color: white;
 }

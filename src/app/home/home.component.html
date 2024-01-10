@@ -1,66 +1,93 @@
-<div class="container mt-5">
-    <div *ngIf="!registerMode && !(user$ | async)" style="text-align: center;">
-        <section class="gradient-custom">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                            <div class="card-body p-5 text-center">
+<div *ngIf="!registerMode && !(user$ | async)" style="text-align: center;">
+  <section class="gradient-custom">
+      <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                  <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                      <div class="card-body p-5 text-center">
+                          <div class="mb-md-5 mt-md-4 pb-5">
+                              <h2 class="fw-bold mb-2 text-uppercase">{{ 'LOGIN' | translate }}
+                                <img class="icon" src="../../assets/images/chess.png"/></h2>
+                              <p class="mb-5">{{ 'ENTER_LOGIN_PASSWORD' | translate }}</p>
+                              <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                                  <div class="form-outline form-white mb-4">
+                                      <input type="email" id="typeEmailX" class="form-control form-control-lg"
+                                          [(ngModel)]="username" name="username" required>
+                                  </div>
 
-                                <div class="mb-md-5 mt-md-4 pb-5">
+                                  <div class="form-outline form-white mb-4">
+                                      <input class="form-control form-control-lg" id="typePasswordX" type="password"
+                                          placeholder="{{ 'PASSWORD' | translate }}" [(ngModel)]="password" name="password" required>
+                                  </div>
+                                  <p class="small mb-5 pb-lg-2 "><a class="text-white-50 navigation-link" (click)="redirectTo('reminder')">{{ 'FORGOT_PASSWORD' | translate }}</a></p>
 
-                                    <h2 class="fw-bold mb-2 text-uppercase">{{ 'LOGIN' | translate }}</h2>
-                                    <p class="text-white-50 mb-5">{{ 'ENTER_LOGIN_PASSWORD' | translate }}</p>
-                                    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
-                                        <div class="form-outline form-white mb-4">
-                                            <input type="email" id="typeEmailX" class="form-control form-control-lg"
-                                                [(ngModel)]="username" name="username" required>
-                                        </div>
+                                  <button class="btn btn-outline-light btn-lg px-5" type="submit">{{ 'LOGIN' | translate }}</button>
+                              </form>
+                              <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                  <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                  <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                  <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                              </div>
 
-                                        <div class="form-outline form-white mb-4">
-                                            <input class="form-control form-control-lg" id="typePasswordX" type="password"
-                                                placeholder="{{ 'PASSWORD' | translate }}" [(ngModel)]="password" name="password" required>
-                                        </div>
-                                        <p class="small mb-5 pb-lg-2 "><a class="text-white-50 navigation-link" (click)="redirectTo('reminder')">{{ 'FORGOT_PASSWORD' | translate }}</a></p>
+                          </div>
 
-                                        <button class="btn btn-outline-light btn-lg px-5" type="submit">{{ 'LOGIN' | translate }}</button>
-                                    </form>
-                                    <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                        <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                        <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                        <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                                    </div>
+                          <div>
+                              <p class="mb-0">{{ 'ACCOUNT_QUESTION' | translate }}
+                                  <button (click)="registerToggle()" class="btn btn-outline-success btn-sm">{{ 'SIGN_UP' | translate }}</button>
+                              </p>
+                          </div>
 
-                                </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
 
-                                <div>
-                                    <p class="mb-0">{{ 'ACCOUNT_QUESTION' | translate }}
-                                        <button (click)="registerToggle()" class="btn btn-outline-success btn-sm">{{ 'SIGN_UP' | translate }}</button>
-                                    </p>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="bg"></div>
-        <div class="bg bg2"></div>
-        <div class="bg bg3"></div>
-    </div>
-
-    <div *ngIf="registerMode" class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
-            </div>
+<div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
         </div>
     </div>
+</div>
 
-    <!-- after login -->
-    <ng-container *ngIf="user$ | async">
+  <!-- after login -->
+  <ng-container *ngIf="user$ | async">
+    <div class="home-container">
+      <div class = "card">
+        <div class = "image">
+          <img href="#" src="../../assets/images/anime/cat_lawyer.png">
+        </div>
+        <div class="card-content">
+          <a href="/law-ai"><h3>{{ 'CHAT' | translate }}</h3></a>
+          <p>{{ 'CHAT_CARD_TEXT' | translate }}</p>
+        </div>
+      </div>
 
-    </ng-container>
+      <div class ="card">
+        <div class ="image">
+          <img href="#" src="../../assets/images/anime/pikachu.jpg">
+        </div>
+        <div class="card-content">
+          <a href="/chat-cards"><h3>{{ 'CHAT_CARD_LIST' | translate }}</h3></a>
+          <p>{{ 'CHAT_CARD_LIST_TEXT' | translate }}</p>
+        </div>
+      </div>
+
+      <div class = "card">
+        <div class = "image">
+          <img href="#" src="../../assets/images/anime/rabit_lawyer.png">
+        </div>
+        <div class="card-content">
+          <a href="/document-generator"><h3>{{ 'DOCUMENT_GENERATOR' | translate }}</h3></a>
+          <p>{{ 'DOCUMENT_GENERATOR_TEXT' | translate }}</p>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
 
 <mat-spinner *ngIf="isLoading$ | async" class="center__spinner" color="accent" diameter="40"></mat-spinner>
