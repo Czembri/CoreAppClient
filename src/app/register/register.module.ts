@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
 import { RegisterComponent } from "./register.component";
 import { MatTableModule } from "@angular/material/table";
+import { TranslateModule } from "@ngx-translate/core";
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { MatTableModule } from "@angular/material/table";
     ReactiveFormsModule,
     MatIconModule,
     MatTableModule,
+    TranslateModule
   ], exports: [
     RegisterComponent
   ]

@@ -1,5 +1,5 @@
 <form #loginForm="ngForm" (ngSubmit)="register()" autocomplete="off">
-    <h2 class="text-center text-success">Sign up</h2>
+    <h2 class="text-center text-success">{{ 'SIGN_UP' | translate }}</h2>
     <hr>
     <div class="mb-3">
         <input type="text" class="form-control mb-2" [(ngModel)]="username" name="username" placeholder="Username">
@@ -12,7 +12,7 @@
         <input type="text" class="form-control" [(ngModel)]="city" name="city" placeholder="City">
     </div>
     <div class="text-center">
-        <button class="btn btn-outline-success btn-sm me-2" type="submit">Register</button>
-        <button class="btn btn-outline-warning btn-sm" type="button" (click)="cancel()">Cancel</button>
+        <button class="btn btn-outline-success btn-sm me-2" type="submit">{{ 'REGISTER' | translate }}</button>
+        <button class="btn btn-outline-warning btn-sm" type="button" (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
 </form>
